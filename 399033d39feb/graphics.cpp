@@ -9,7 +9,7 @@ void draw_player(int u, int v, int key)
     uLCD.filled_rectangle(u, v, u+11, v+11, RED);
 }
 
-#define YELLOW 0xFFFF00
+#define YELLOW 0xEEDD33
 #define BROWN  0xD2691E
 #define DIRT   BROWN
 void draw_img(int u, int v, const char* img)
@@ -49,7 +49,7 @@ void draw_upper_status()
 {
     // Draw bottom border of status bar
     uLCD.line(0, 9, 127, 9, GREEN);
-    
+
     // Add other status info drawing code here
 }
 
@@ -57,7 +57,7 @@ void draw_lower_status()
 {
     // Draw top border of status bar
     uLCD.line(0, 118, 127, 118, GREEN);
-    
+
     // Add other status info drawing code here
 }
 
@@ -68,5 +68,3 @@ void draw_border()
     uLCD.filled_rectangle(0,   114, 127, 117, WHITE); // Bottom
     uLCD.filled_rectangle(124,  14, 127, 117, WHITE); // Right
 }
-
-
