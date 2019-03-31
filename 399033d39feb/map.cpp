@@ -26,7 +26,9 @@ static int active_map;
  * This function should uniquely map (x,y) onto the space of unsigned integers.
  */
 static unsigned XY_KEY(int X, int Y) {
-    // TODO: Fix me!
+    int x = X * 100;//any power of 10 greater than H
+    unsigned ret = x + y;
+    return ret;
 }
 
 /**
@@ -36,12 +38,14 @@ static unsigned XY_KEY(int X, int Y) {
  */
 unsigned map_hash(unsigned key)
 {
-    // TODO: Fix me!
+    int Y = key%100;
+    unsigned y = Y;
+    return y;
 }
 
 void maps_init()
 {
-    // TODO: Implement!    
+    // TODO: Implement!
     // Initialize hash table
     // Set width & height
 }
@@ -76,39 +80,48 @@ void print_map()
 
 int map_width()
 {
+    return map->w;
 }
 
 int map_height()
 {
+    return map->h;
 }
 
 int map_area()
 {
+    return map->w * map->h;
 }
 
 MapItem* get_north(int x, int y)
 {
+    return (MapItem*) getItem(map->items, XY_KEY(x, y+1));
 }
 
 MapItem* get_south(int x, int y)
 {
+    return (MapItem*) getItem(map->items, XY_KEY(x, y-1));
 }
 
 MapItem* get_east(int x, int y)
 {
+    return (MapItem*) getItem(map->items, XY_KEY(x-1, y));
 }
 
 MapItem* get_west(int x, int y)
 {
+    return (MapItem*) getItem(map->items, XY_KEY(x+1, y+1));
 }
 
 MapItem* get_here(int x, int y)
 {
+    return (MapItem*) getItem(map->items, XY_KEY(x, y));
 }
 
 
 void map_erase(int x, int y)
 {
+    removeItem(map->items, XY_KEY(x, y));
 }
 
 void add_wall(int x, int y, int dir, int len)
