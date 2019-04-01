@@ -27,7 +27,7 @@ static int active_map;
  */
 static unsigned XY_KEY(int X, int Y) {
     int x = X * 100;//any power of 10 greater than H
-    unsigned ret = x + y;
+    unsigned ret = x + Y;
     return ret;
 }
 
