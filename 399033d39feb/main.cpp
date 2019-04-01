@@ -42,7 +42,7 @@ int get_action(GameInputs inputs)
  * Update the game state based on the user action. For example, if the user
  * requests GO_UP, then this function should determine if that is possible by
  * consulting the map, and update the Player position accordingly.
- * 
+ *
  * Return values are defined below. FULL_DRAW indicates that for this frame,
  * draw_game should not optimize drawing and should draw every tile, even if
  * the player has not moved.
@@ -55,13 +55,13 @@ int update_game(int action)
     // Save player previous location before updating
     Player.px = Player.x;
     Player.py = Player.y;
-    
+
     // Do different things based on the each action.
     // You can define functions like "go_up()" that get called for each case.
     switch(action)
     {
         case GO_UP:     break;
-        case GO_LEFT:   break;            
+        case GO_LEFT:   break;
         case GO_DOWN:   break;
         case GO_RIGHT:  break;
         case ACTION_BUTTON: break;
@@ -73,34 +73,34 @@ int update_game(int action)
 
 /**
  * Entry point for frame drawing. This should be called once per iteration of
- * the game loop. This draws all tiles on the screen, followed by the status 
- * bars. Unless init is nonzero, this function will optimize drawing by only 
+ * the game loop. This draws all tiles on the screen, followed by the status
+ * bars. Unless init is nonzero, this function will optimize drawing by only
  * drawing tiles that have changed from the previous frame.
  */
 void draw_game(int init)
 {
     // Draw game border first
     if(init) draw_border();
-    
+
     // Iterate over all visible map tiles
     for (int i = -5; i <= 5; i++) // Iterate over columns of tiles
     {
         for (int j = -4; j <= 4; j++) // Iterate over one column of tiles
         {
             // Here, we have a given (i,j)
-            
+
             // Compute the current map (x,y) of this tile
             int x = i + Player.x;
             int y = j + Player.y;
-            
+
             // Compute the previous map (px, py) of this tile
             int px = i + Player.px;
             int py = j + Player.py;
-                        
+
             // Compute u,v coordinates for drawing
             int u = (i+5)*11 + 3;
             int v = (j+4)*11 + 15;
-            
+
             // Figure out what to draw
             DrawFunc draw = NULL;
             if (init && i == 0 && j == 0) // Only draw the player on init
@@ -134,7 +134,7 @@ void draw_game(int init)
         }
     }
 
-    // Draw status bars    
+    // Draw status bars
     draw_upper_status();
     draw_lower_status();
 }
@@ -153,7 +153,7 @@ void init_main_map()
         add_plant(i % map_width(), i / map_width());
     }
     pc.printf("plants\r\n");
-        
+
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());
     add_wall(0,              map_height()-1, HORIZONTAL, map_width());
@@ -178,7 +178,7 @@ int main()
     // Initialize the maps
     maps_init();
     init_main_map();
-    
+
     // Initialize game state
     set_active_map(0);
     Player.x = Player.y = 5;
@@ -191,14 +191,20 @@ int main()
     {
         // Timer to measure game update speed
         Timer t; t.start();
-        
+
         // Actuall do the game update:
-        // 1. Read inputs        
-        // 2. Determine action (get_action)        
+        // 1. Read inputs
+        int inputs;
+        // 2. Determine action (get_action)
+        int action = get_action(inputs);
         // 3. Update game (update_game)
+        int init = update_game(action);
         // 3b. Check for game over
+        if (init == 1){
+
+        }
         // 4. Draw frame (draw_game)
-        
+        draw_game(init);
         // 5. Frame delay
         t.stop();
         int dt = t.read_ms();
