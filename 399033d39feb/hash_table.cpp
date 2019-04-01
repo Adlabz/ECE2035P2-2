@@ -129,7 +129,7 @@ static HashTableEntry* createHashTableEntry(unsigned int key, void* value) {
     // allocate space for the new entry on heap
     HashTableEntry* newEntry;
     if (!(newEntry = (HashTableEntry*)malloc(sizeof(HashTableEntry)))) {
-        exit -1;
+        exit(1);
     }
     // set components of new entry
     newEntry->key = key;
@@ -191,7 +191,7 @@ HashTable* createHashTable(HashFunction hashFunction, unsigned int numBuckets) {
   newTable->num_buckets = numBuckets;
   if(!(newTable->buckets
             = (HashTableEntry**)malloc(numBuckets*sizeof(HashTableEntry*)))) {
-    exit -1;
+    exit(1);
   }
   // ^ I think Dr. Schimmel said it was bad practice not to check if malloc
   // returned something so I changed these lines to reflect that
