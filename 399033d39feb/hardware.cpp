@@ -40,8 +40,8 @@ GameInputs read_inputs()
 {
     GameInputs in;
     in.b1 = button1.read();
-    in->b2 = button2.read();
-    in->b3 = button3.read();
+    in.b2 = button2.read();
+    in.b3 = button3.read();
     acc.readXGravity(in->ax);
     acc.readYGravity(in->ay);
     acc.readZGravity(in->az);
