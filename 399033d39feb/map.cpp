@@ -80,48 +80,48 @@ void print_map()
 
 int map_width()
 {
-    return map->w;
+    return map.w;
 }
 
 int map_height()
 {
-    return map->h;
+    return map.h;
 }
 
 int map_area()
 {
-    return map->w * map->h;
+    return map.w * map.h;
 }
 
 MapItem* get_north(int x, int y)
 {
-    return (MapItem*) getItem(map->items, XY_KEY(x, y+1));
+    return (MapItem*) getItem(map.items, XY_KEY(x, y+1));
 }
 
 MapItem* get_south(int x, int y)
 {
-    return (MapItem*) getItem(map->items, XY_KEY(x, y-1));
+    return (MapItem*) getItem(map.items, XY_KEY(x, y-1));
 }
 
 MapItem* get_east(int x, int y)
 {
-    return (MapItem*) getItem(map->items, XY_KEY(x-1, y));
+    return (MapItem*) getItem(map.items, XY_KEY(x-1, y));
 }
 
 MapItem* get_west(int x, int y)
 {
-    return (MapItem*) getItem(map->items, XY_KEY(x+1, y+1));
+    return (MapItem*) getItem(map.items, XY_KEY(x+1, y+1));
 }
 
 MapItem* get_here(int x, int y)
 {
-    return (MapItem*) getItem(map->items, XY_KEY(x, y));
+    return (MapItem*) getItem(map.items, XY_KEY(x, y));
 }
 
 
 void map_erase(int x, int y)
 {
-    removeItem(map->items, XY_KEY(x, y));
+    removeItem(map.items, XY_KEY(x, y));
 }
 
 void add_wall(int x, int y, int dir, int len)
