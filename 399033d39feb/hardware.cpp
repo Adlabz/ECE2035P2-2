@@ -27,17 +27,23 @@ int hardware_init()
     // Crank up the speed
     uLCD.baudrate(3000000);
     pc.baud(115200);
-        
+
     //Initialize pushbuttons
-    button1.mode(PullUp); 
+    button1.mode(PullUp);
     button2.mode(PullUp);
     button3.mode(PullUp);
-    
+
     return ERROR_NONE;
 }
 
-GameInputs read_inputs() 
+GameInputs read_inputs()
 {
     GameInputs in;
+    in->b1 = button1;
+    in->b2 = button2;
+    in->b3 = button3;
+    acc.readXGravity(in->ax);
+    acc.readYGravity(in->ay);
+    acc.readZGravity(in->az);
     return in;
 }

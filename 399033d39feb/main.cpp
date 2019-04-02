@@ -194,7 +194,7 @@ int main()
 
         // Actuall do the game update:
         // 1. Read inputs
-        GameInputs inputs;
+        GameInputs inputs = read_inputs;
         // 2. Determine action (get_action)
         int action = get_action(inputs);
         // 3. Update game (update_game)
