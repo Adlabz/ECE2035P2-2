@@ -41,28 +41,28 @@ int get_action(GameInputs inputs)
     if (inputs.b2 == 0) {
         return MENU_BUTTON;
     }
-    double absX = input.ax;
-    if (input.ax < 0) {
+    double absX = inputs.ax;
+    if (inputs.ax < 0) {
         absX = absX * (-1);
     }
-    double absY = input.ay;
-    if (input.ay < 0) {
+    double absY = inputs.ay;
+    if (inputs.ay < 0) {
         absY = absY * (-1);
     }
-    double absZ = input.az;
-    if (input.az < 0) {
+    double absZ = inputs.az;
+    if (inputs.az < 0) {
         absZ = absZ * (-1);
     }
     double threshold = 2;
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
-            if (input.ax < 0) {
+            if (inputs.ax < 0) {
                 return GO_LEFT;
             } else {
                 return GO_RIGHT;
             }
         } else if (absY * 0.9 > absX) {
-            if (input.ay < 0) {
+            if (inputs.ay < 0) {
                 return GO_DOWN;
             } else {
                 return GO_UP;
