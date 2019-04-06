@@ -28,7 +28,7 @@ int hardware_init()
     pc.printf("Ptest-1\r\n");
     uLCD.baudrate(3000000);
     pc.printf("Ptest0\r\n");
-    pc.baud(115200);
+    //pc.baud(115200);
     pc.printf("Ptest1\r\n");
     //Initialize pushbuttons
     button1.mode(PullUp);
