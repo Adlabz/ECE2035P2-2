@@ -38,9 +38,7 @@ static unsigned XY_KEY(int X, int Y) {
  */
 unsigned map_hash(unsigned key)
 {
-    int Y = key%256;
-    unsigned y = Y;
-    return y;
+    return key%256;
 }
 
 void maps_init()
