@@ -35,12 +35,40 @@ struct {
 #define GO_DOWN 6
 int get_action(GameInputs inputs)
 {
-    pc.printf("Button1: %d\n", inputs.b1);
-    pc.printf("Button2: %d\n", inputs.b2);
-    pc.printf("Button3: %d\n", inputs.b3);
-    pc.printf("Accel x: %1.6f\n", inputs.ax);
-    pc.printf("Accel y: %1.6f\n", inputs.ay);
-    pc.printf("Accel z: %1.6f\n", inputs.az);
+    if (inputs.b1 == 0) {
+        return ACTION_BUTTON;
+    }
+    if (inputs.b2 == 0) {
+        return MENU_BUTTON
+    }
+    double absX = input.ax;
+    if (input.ax < 0) {
+        absX = absX * (-1);
+    }
+    double absY = input.ay;
+    if (input.ay < 0) {
+        absY = absY * (-1);
+    }
+    double absZ = input.az;
+    if (input.az < 0) {
+        absZ = absZ * (-1);
+    }
+    double threshold = 2;
+    if (absX * threshold > absZ || absY * threshold > absZ) {
+        if (absX * 0.9 > absY) {
+            if (input.ax < 0) {
+                return GO_LEFT;
+            } else {
+                return GO_RIGHT;
+            }
+        } else if (absY * 0.9 > absX) {
+            if (input.ay < 0) {
+                return GO_DOWN;
+            } else {
+                return GO_UP;
+            }
+        }
+    }
     return NO_ACTION;
 }
 
@@ -66,10 +94,22 @@ int update_game(int action)
     // You can define functions like "go_up()" that get called for each case.
     switch(action)
     {
-        case GO_UP:     break;
-        case GO_LEFT:   break;
-        case GO_DOWN:   break;
+        case GO_UP:
+            Player.y = Player.y + 1;
+            return FULL_DRAW;
+            break;
+        case GO_LEFT:
+            Player.x = Player.x - 1;
+            return FULL_DRAW;
+            break;
+        case GO_DOWN:
+            Player.y = Player.y - 1;
+            return FULL_DRAW;
+            break;
         case GO_RIGHT:  break;
+            Player.x = Player.x + 1;
+            return FULL_DRAW;
+            break;
         case ACTION_BUTTON: break;
         case MENU_BUTTON: break;
         default:        break;
