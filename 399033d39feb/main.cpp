@@ -176,7 +176,7 @@ int main()
     // First things first: initialize hardware
     pc.printf("test\r\n");
     ASSERT_P(hardware_init() == ERROR_NONE, "Hardware init failed!");
-
+    pc.printf("test2\r\n");
     // Initialize the maps
     maps_init();
     init_main_map();
