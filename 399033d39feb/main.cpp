@@ -54,24 +54,28 @@ int get_action(GameInputs inputs)
         absZ = absZ * (-1);
     }
     double threshold = 2;
+    MapItem* north = get_north(Player.x, Player.y);
+    MapItem* south = get_south(Player.x, Player.y);
+    MapItem* east = get_east(Player.x, Player.y);
+    MapItem* west = get_west(Player.x, Player.y);
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
             if (inputs.ax < 0) {
-                if (get_west(Player.x, Player.y).walkable != 0){
+                if (west.walkable != 0){
                     return GO_LEFT;
                 }
             } else {
-                if (get_east(Player.x, Player.y).walkable != 0){
+                if (east.walkable != 0){
                     return GO_RIGHT;
                 }
             }
         } else if (absY * 0.9 > absX) {
             if (inputs.ay < 0) {
-                if (get_north(Player.x, Player.y).walkable != 0){
+                if (north.walkable != 0){
                     return GO_UP;
                 }
             } else {
-                if (get_south(Player.x, Player.y).walkable != 0){
+                if (south.walkable != 0){
                     return GO_DOWN;
                 }
             }
