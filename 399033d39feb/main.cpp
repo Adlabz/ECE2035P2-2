@@ -174,6 +174,7 @@ void init_main_map()
 int main()
 {
     // First things first: initialize hardware
+    pc.printf("test\r\n");
     ASSERT_P(hardware_init() == ERROR_NONE, "Hardware init failed!");
 
     // Initialize the maps
@@ -190,7 +191,6 @@ int main()
     // Main game loop
     while(1)
     {
-            pc.printf("test\r\n");
         // Timer to measure game update speed
         Timer t; t.start();
 
