@@ -35,6 +35,7 @@ struct {
 #define GO_DOWN 6
 int get_action(GameInputs inputs)
 {
+
     return NO_ACTION;
 }
 
@@ -189,6 +190,7 @@ int main()
     // Main game loop
     while(1)
     {
+            pc.printf("test\r\n");
         // Timer to measure game update speed
         Timer t; t.start();
 
