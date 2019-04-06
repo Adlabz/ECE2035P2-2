@@ -25,18 +25,18 @@ wave_player waver(&DACout);
 int hardware_init()
 {
     // Crank up the speed
-    pc.printf("Ptest-1\r\n");
+
     uLCD.baudrate(3000000);
-    pc.printf("Ptest0\r\n");
-    //pc.baud(115200);
-    pc.printf("Ptest1\r\n");
+
+    pc.baud(115200);
+
     //Initialize pushbuttons
     button1.mode(PullUp);
-    pc.printf("Ptest1\r\n");
+
     button2.mode(PullUp);
-    pc.printf("Ptest1\r\n");
+
     button3.mode(PullUp);
-    pc.printf("Ptest1\r\n");
+
     return ERROR_NONE;
 }
 
