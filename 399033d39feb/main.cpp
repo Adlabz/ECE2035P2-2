@@ -153,6 +153,7 @@ void init_main_map()
     pc.printf("mtest2\r\n");
     for(int i = map_width() + 3; i < map_area(); i += 39)
     {
+        pc.printf("mtesti\r\n");
         add_plant(i % map_width(), i / map_width());
     }
     pc.printf("mtest3\r\n");
