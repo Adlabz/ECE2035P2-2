@@ -35,7 +35,12 @@ struct {
 #define GO_DOWN 6
 int get_action(GameInputs inputs)
 {
-
+    pc.printf("Button1: %d", in.b1);
+    pc.printf("Button2: %d", in.b2);
+    pc.printf("Button3: %d", in.b3);
+    pc.printf("Accel x: %d", in.ax);
+    pc.printf("Accel y: %d", in.ay);
+    pc.printf("Accel z: %d", in.az);
     return NO_ACTION;
 }
 
