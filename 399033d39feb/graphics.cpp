@@ -37,7 +37,7 @@ void draw_img(int u, int v, const char* img)
 void draw_nothing(int u, int v)
 {
     // Fill a tile with blackness
-    int dirtBlock[11*11] =
+    int dirtBlock[11][11] =
     {
         {G, B, D, Y, G, Y, B, Y, G, Y, G},
         {G, Y, G, Y, G, B, Y, B, G, Y, Y},
