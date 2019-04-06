@@ -38,6 +38,8 @@ static unsigned XY_KEY(int X, int Y) {
  */
 unsigned map_hash(unsigned key)
 {
+    pc.printf("maphashtest0\r\n");
+    pc.printf("%d\r\n", key%256);
     return key%256;
 }
 
