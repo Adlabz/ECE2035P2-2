@@ -151,19 +151,27 @@ static HashTableEntry* createHashTableEntry(unsigned int key, void* value) {
 * @return The pointer to the hash table entry, or NULL if key does not exist
 */
 static HashTableEntry* findItem(HashTable* hashTable, unsigned int key) {
+    pc.printf("fhtest0\r\n");
     // get the hash value of the key to use as index for buckets
+    pc.printf("fhtest1\r\n");
     int hashValue = hashTable->hash(key);
+    pc.printf("fhtest2\r\n");
     // get head of linked list that the entry would be in if it exists
     HashTableEntry * llHead = hashTable->buckets[hashValue];
+    pc.printf("fhtest3\r\n");
     // standard linked list find as shown in class
     while (llHead) {
+        pc.printf("fhtest4\r\n");
         // if the current node has the key we're looking for, return it
         if (llHead->key == key) {
             return llHead;
         }
+        pc.printf("fhtest5\r\n");
         // otherwise go to the next node
         llHead = llHead->next;
+        pc.printf("fhtest6\r\n");
     }
+    pc.printf("fhtest7\r\n");
     // if we reach the end of the linked list without returning, return NULL
     return NULL;
 }
