@@ -39,7 +39,7 @@ int get_action(GameInputs inputs)
         return ACTION_BUTTON;
     }
     if (inputs.b2 == 0) {
-        return MENU_BUTTON
+        return MENU_BUTTON;
     }
     double absX = input.ax;
     if (input.ax < 0) {
