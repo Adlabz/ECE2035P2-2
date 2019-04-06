@@ -104,12 +104,12 @@ MapItem* get_south(int x, int y)
 
 MapItem* get_east(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x-1, y));
+    return (MapItem*) getItem(map.items, XY_KEY(x+1, y));
 }
 
 MapItem* get_west(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x+1, y+1));
+    return (MapItem*) getItem(map.items, XY_KEY(x-1, y+1));
 }
 
 MapItem* get_here(int x, int y)
