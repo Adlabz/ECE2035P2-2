@@ -48,6 +48,10 @@ void maps_init()
     map.w = 75;
     map.h = 75;
     HashTable* table = createHashTable(map_hash, 256);
+    add_wall(0 , 0, HORIZONTAL, 99);
+    add_wall(0 , 99, HORIZONTAL, 99);
+    add_wall(0 , 0, VERTICAL, 99);
+    add_wall(99 , 0, VERTICAL, 99);
 }
 
 Map* get_active_map()
