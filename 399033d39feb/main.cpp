@@ -173,6 +173,7 @@ void init_main_map()
  */
 int main()
 {
+    pc.baud(115200);
     // First things first: initialize hardware
     pc.printf("test\r\n");
     pc.printf("test2\r\n");
