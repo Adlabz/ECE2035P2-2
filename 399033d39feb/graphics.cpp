@@ -12,6 +12,11 @@ void draw_player(int u, int v, int key)
 #define YELLOW 0xEEDD33
 #define BROWN  0xD2691E
 #define DIRT   BROWN
+#define G 0x307400
+#define B 0x744300
+#define D 0x707070
+#define Y 0x7c8b00
+
 void draw_img(int u, int v, const char* img)
 {
     int colors[11*11];
@@ -32,7 +37,25 @@ void draw_img(int u, int v, const char* img)
 void draw_nothing(int u, int v)
 {
     // Fill a tile with blackness
-    uLCD.filled_rectangle(u, v, u+10, v+10, BLACK);
+    int dirtBlock[11*11] =
+    {
+        {G, B, D, Y, G, Y, B, Y, G, Y, G},
+        {G, Y, G, Y, G, B, Y, B, G, Y, Y},
+        {Y, B, Y, Y, B, Y, Y, G, Y, G, G},
+        {G, G, Y, G, Y, G, G, Y, B, Y, G},
+        {Y, Y, G, Y, G, Y, G, Y, D, B, D},
+        {D, Y, B, Y, B, G, Y, G, Y, Y, B},
+        {Y, G, Y, Y, D, B, G, Y, G, B, B},
+        {B, Y, B, Y, Y, G, Y, G, Y, Y, B},
+        {Y, G, G, G, D, Y, B, Y, G, B, Y},
+        {B, Y, G, Y, B, B, Y, G, B, G, B},
+        {G, G, Y, G, D, G, B, Y, G, B, G}
+    };
+    for (int i = 0; i <= 10; i++){
+        for (int j = 0; j <= 10; j++) {
+            uLCD.pixel(u + i, v + j, dirtblock[i][j]);
+        }
+    }
 }
 
 void draw_wall(int u, int v)
