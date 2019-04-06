@@ -47,7 +47,7 @@ void maps_init()
 {
     map.w = 75;
     map.h = 75;
-    HashTable table = createHashTable(map_hash, 256);
+    HashTable* table = createHashTable(map_hash, 256);
 }
 
 Map* get_active_map()
