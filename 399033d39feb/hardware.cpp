@@ -27,12 +27,14 @@ int hardware_init()
     // Crank up the speed
     uLCD.baudrate(3000000);
     pc.baud(115200);
-
+    pc.printf("Ptest1\r\n");
     //Initialize pushbuttons
     button1.mode(PullUp);
+    pc.printf("Ptest1\r\n");
     button2.mode(PullUp);
+    pc.printf("Ptest1\r\n");
     button3.mode(PullUp);
-
+    pc.printf("Ptest1\r\n");
     return ERROR_NONE;
 }
 
