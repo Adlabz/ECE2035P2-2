@@ -154,6 +154,7 @@ static HashTableEntry* findItem(HashTable* hashTable, unsigned int key) {
     pc.printf("fhtest0\r\n");
     // get the hash value of the key to use as index for buckets
     pc.printf("fhtest1\r\n");
+    pc.printf("%d\r\n", key);
     int hashValue = hashTable->hash(key);
     pc.printf("fhtest2\r\n");
     // get head of linked list that the entry would be in if it exists
