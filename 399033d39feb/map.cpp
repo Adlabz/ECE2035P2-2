@@ -26,7 +26,7 @@ static int active_map;
  * This function should uniquely map (x,y) onto the space of unsigned integers.
  */
 static unsigned XY_KEY(int X, int Y) {
-    int x = X * 100;//any power of 10 greater than H
+    int x = X * 256;//any power of 2 greater than H
     unsigned ret = x + Y;
     return ret;
 }
@@ -38,16 +38,17 @@ static unsigned XY_KEY(int X, int Y) {
  */
 unsigned map_hash(unsigned key)
 {
-    int Y = key%100;
+    int Y = key%256;
     unsigned y = Y;
     return y;
 }
 
 void maps_init()
 {
-    // TODO: Implement!
-    // Initialize hash table
-    // Set width & height
+    map.w = 75;
+    map.h = 75;
+    HashTable table;
+    table = createHashTable(map_hash, 256);
 }
 
 Map* get_active_map()
