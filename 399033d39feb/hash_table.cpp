@@ -151,28 +151,28 @@ static HashTableEntry* createHashTableEntry(unsigned int key, void* value) {
 * @return The pointer to the hash table entry, or NULL if key does not exist
 */
 static HashTableEntry* findItem(HashTable* hashTable, unsigned int key) {
-    pc.printf("fhtest0\r\n");
+
     // get the hash value of the key to use as index for buckets
-    pc.printf("fhtest1\r\n");
+
     pc.printf("%d\r\n", key);
     int hashValue = hashTable->hash(key);
-    pc.printf("fhtest2\r\n");
+
     // get head of linked list that the entry would be in if it exists
     HashTableEntry * llHead = hashTable->buckets[hashValue];
-    pc.printf("fhtest3\r\n");
+
     // standard linked list find as shown in class
     while (llHead) {
-        pc.printf("fhtest4\r\n");
+
         // if the current node has the key we're looking for, return it
         if (llHead->key == key) {
             return llHead;
         }
-        pc.printf("fhtest5\r\n");
+
         // otherwise go to the next node
         llHead = llHead->next;
-        pc.printf("fhtest6\r\n");
+
     }
-    pc.printf("fhtest7\r\n");
+
     // if we reach the end of the linked list without returning, return NULL
     return NULL;
 }
@@ -263,29 +263,29 @@ void destroyHashTable(HashTable* hashTable) {
  * @return pointer to old value if overwritten or NULL
  */
 void* insertItem(HashTable* hashTable, unsigned int key, void* value) {
-    pc.printf("htest0\r\n");
+
     HashTableEntry* thisNode;
-    pc.printf("htest1\r\n");
+
     if (thisNode = findItem(hashTable, key)) {
-        pc.printf("htest2\r\n");
+
         void* pointer = thisNode->value;
         thisNode->value = value;
         return pointer;
     }
-    pc.printf("htest3\r\n");
+
     // get the hash value of the key to use as index for buckets
     int hashValue = hashTable->hash(key);
-    pc.printf("htest4\r\n");
+
     // get head of linked list that the entry should go into
     HashTableEntry * llHead = hashTable->buckets[hashValue];
-    pc.printf("htest5\r\n");
+
     // make new entry and set next as appropriate
     HashTableEntry * entry = createHashTableEntry(key, value);
-    pc.printf("htest6\r\n");
+
     entry->next = llHead;
-    pc.printf("htest7\r\n");
+
     hashTable->buckets[hashValue] = entry;
-    pc.printf("htest8\r\n");
+
     // return NULL since nothing was overwritten
     return NULL;
 }

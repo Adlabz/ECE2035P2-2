@@ -38,7 +38,7 @@ static unsigned XY_KEY(int X, int Y) {
  */
 unsigned map_hash(unsigned key)
 {
-    pc.printf("maphashtest0\r\n");
+
     pc.printf("%d\r\n", key%256);
     return key%256;
 }
@@ -142,19 +142,19 @@ void add_wall(int x, int y, int dir, int len)
 
 void add_plant(int x, int y)
 {
-    pc.printf("ptest0\r\n");
+
     MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
-    pc.printf("ptest1\r\n");
+
     w1->type = PLANT;
-    pc.printf("ptest2\r\n");
+
     w1->draw = draw_plant;
-    pc.printf("ptest3\r\n");
+
     w1->walkable = true;
-    pc.printf("ptest4\r\n");
+
     w1->data = NULL;
-    pc.printf("ptest5\r\n");
+
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
-    pc.printf("ptest6\r\n");
+
     if (val) free(val); // If something is already there, free it
-    pc.printf("ptest7\r\n");
+
 }

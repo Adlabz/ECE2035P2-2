@@ -148,29 +148,29 @@ void draw_game(int init)
 void init_main_map()
 {
     // "Random" plants
-    pc.printf("mtest1\r\n");
+
     Map* map = set_active_map(0);
-    pc.printf("mtest2\r\n");
+
     for(int i = map_width() + 3; i < map_area(); i += 39)
     {
-        pc.printf("mtesti\r\n");
+
         add_plant(i % map_width(), i / map_width());
     }
-    pc.printf("mtest3\r\n");
+
     pc.printf("plants\r\n");
-    pc.printf("mtest4\r\n");
+
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());
-    pc.printf("mtest5\r\n");
+
     add_wall(0,              map_height()-1, HORIZONTAL, map_width());
     add_wall(0,              0,              VERTICAL,   map_height());
     add_wall(map_width()-1,  0,              VERTICAL,   map_height());
-    pc.printf("mtest6\r\n");
+
     pc.printf("Walls done!\r\n");
-    pc.printf("mtest7\r\n");
+
 
     print_map();
-    pc.printf("mtest8\r\n");
+
 }
 
 /**
@@ -182,21 +182,21 @@ void init_main_map()
 int main()
 {
     // First things first: initialize hardware
-    pc.printf("test\r\n");
-    pc.printf("test2\r\n");
+
+
     ASSERT_P(hardware_init() == ERROR_NONE, "Hardware init failed!");
-    pc.printf("test3\r\n");
+
     // Initialize the maps
     maps_init();
-    pc.printf("test4\r\n");
+
     init_main_map();
-    pc.printf("test5\r\n");
+
 
     // Initialize game state
     set_active_map(0);
-    pc.printf("test6\r\n");
+
     Player.x = Player.y = 5;
-    pc.printf("test7\r\n");
+
 
     // Initial drawing
     draw_game(true);
