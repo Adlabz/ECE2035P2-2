@@ -57,15 +57,23 @@ int get_action(GameInputs inputs)
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
             if (inputs.ax < 0) {
-                return GO_LEFT;
+                if (get_west(Player.x, Player.y).walkable != 0){
+                    return GO_LEFT;
+                }
             } else {
-                return GO_RIGHT;
+                if (get_east(Player.x, Player.y).walkable != 0){
+                    return GO_RIGHT;
+                }
             }
         } else if (absY * 0.9 > absX) {
             if (inputs.ay < 0) {
-                return GO_DOWN;
+                if (get_north(Player.x, Player.y).walkable != 0){
+                    return GO_UP;
+                }
             } else {
-                return GO_UP;
+                if (get_south(Player.x, Player.y).walkable != 0){
+                    return GO_DOWN;
+                }
             }
         }
     }
@@ -106,7 +114,7 @@ int update_game(int action)
             Player.y = Player.y - 1;
             return FULL_DRAW;
             break;
-        case GO_RIGHT:  break;
+        case GO_RIGHT:
             Player.x = Player.x + 1;
             return FULL_DRAW;
             break;
