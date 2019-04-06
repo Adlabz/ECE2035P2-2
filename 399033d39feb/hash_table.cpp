@@ -153,8 +153,6 @@ static HashTableEntry* createHashTableEntry(unsigned int key, void* value) {
 static HashTableEntry* findItem(HashTable* hashTable, unsigned int key) {
 
     // get the hash value of the key to use as index for buckets
-
-    pc.printf("%d\r\n", key);
     int hashValue = hashTable->hash(key);
 
     // get head of linked list that the entry would be in if it exists
