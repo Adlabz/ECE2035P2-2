@@ -161,7 +161,6 @@ void init_main_map()
 
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());
-    add_wall(6,              0,              VERTICAL,   map_height());//delet later
     add_wall(0,              map_height()-1, HORIZONTAL, map_width());
     add_wall(0,              0,              VERTICAL,   map_height());
     add_wall(map_width()-1,  0,              VERTICAL,   map_height());
@@ -204,6 +203,7 @@ int main()
     // Main game loop
     while(1)
     {
+        pc.printf("made it into loop\n");
         // Timer to measure game update speed
         Timer t; t.start();
 
