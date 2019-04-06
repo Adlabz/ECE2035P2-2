@@ -175,15 +175,20 @@ int main()
 {
     // First things first: initialize hardware
     pc.printf("test\r\n");
-    ASSERT_P(hardware_init() == ERROR_NONE, "Hardware init failed!");
     pc.printf("test2\r\n");
+    ASSERT_P(hardware_init() == ERROR_NONE, "Hardware init failed!");
+    pc.printf("test3\r\n");
     // Initialize the maps
     maps_init();
+    pc.printf("test4\r\n");
     init_main_map();
+    pc.printf("test5\r\n");
 
     // Initialize game state
     set_active_map(0);
+    pc.printf("test6\r\n");
     Player.x = Player.y = 5;
+    pc.printf("test7\r\n");
 
     // Initial drawing
     draw_game(true);
