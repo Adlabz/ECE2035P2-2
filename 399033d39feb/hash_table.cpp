@@ -253,20 +253,29 @@ void destroyHashTable(HashTable* hashTable) {
  * @return pointer to old value if overwritten or NULL
  */
 void* insertItem(HashTable* hashTable, unsigned int key, void* value) {
+    pc.printf("htest0\r\n");
     HashTableEntry* thisNode;
+    pc.printf("htest1\r\n");
     if (thisNode = findItem(hashTable, key)) {
+        pc.printf("htest2\r\n");
         void* pointer = thisNode->value;
         thisNode->value = value;
         return pointer;
     }
+    pc.printf("htest3\r\n");
     // get the hash value of the key to use as index for buckets
     int hashValue = hashTable->hash(key);
+    pc.printf("htest4\r\n");
     // get head of linked list that the entry should go into
     HashTableEntry * llHead = hashTable->buckets[hashValue];
+    pc.printf("htest5\r\n");
     // make new entry and set next as appropriate
     HashTableEntry * entry = createHashTableEntry(key, value);
+    pc.printf("htest6\r\n");
     entry->next = llHead;
+    pc.printf("htest7\r\n");
     hashTable->buckets[hashValue] = entry;
+    pc.printf("htest8\r\n");
     // return NULL since nothing was overwritten
     return NULL;
 }
