@@ -260,6 +260,7 @@ void init_main_map()
     add_wall(0, 26, HORIZONTAL, 80);
 
     //bumpy surface on major wall
+    /*
     add_wall(20, 26, VERTICAL, 5);
     add_wall(20, 31, HORIZONTAL, 5);
     add_wall(25, 31, VERTICAL, 5);
@@ -267,7 +268,7 @@ void init_main_map()
     add_wall(35, 31, VERTICAL, 5);
     add_wall(40, 31, HORIZONTAL, 5);
     add_wall(40, 26, VERTICAL, 5);
-
+    */
     pc.printf("Walls done!\r\n");
 
 
