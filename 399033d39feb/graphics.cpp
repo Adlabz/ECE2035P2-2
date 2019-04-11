@@ -167,7 +167,7 @@ void draw_lower_status()
     // Add other status info drawing code here
     char s[] = {'O','M','N','I','P','O','T','E','N','T','\0' };
     char o[] = {'O','M','N','I','P','O','T','E','N','T', ' ', 'O', 'F', 'F','\0' };
-    uLCD.text_string(s, 2, 15, FONT_7X8, BLACK);
+    uLCD.text_string(o, 2, 15, FONT_7X8, BLACK);
     uLCD.text_string(s, 4, 15, FONT_7X8, GREEN);
 }
 void un_lower_status()
