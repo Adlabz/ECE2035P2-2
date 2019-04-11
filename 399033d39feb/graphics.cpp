@@ -166,7 +166,16 @@ void draw_lower_status()
 
     // Add other status info drawing code here
     char s[] = {'O','M','N','I','P','O','T','E','N','T','\0' };
-    uLCD.text_string(s, 4, 14, FONT_7X8, GREEN);
+    uLCD.text_string(s, 4, 15, FONT_7X8, GREEN);
+}
+void un_lower_status()
+{
+    // Draw top border of status bar
+    uLCD.line(0, 118, 127, 118, GREEN);
+
+    // Add other status info drawing code here
+    char s[] = {'O','M','N','I','P','O','T','E','N','T', ' ', 'O', 'F', 'F','\0' };
+    uLCD.text_string(s, 2, 15, FONT_7X8, GREEN);
 }
 
 void draw_border()

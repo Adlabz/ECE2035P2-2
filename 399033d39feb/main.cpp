@@ -20,7 +20,7 @@ struct {
     int x,y;    // Current locations
     int px, py; // Previous locations
     int has_key;
-    int omnipotent;
+    int omnipotent, pomnipotent;
 } Player;
 
 /**
@@ -114,6 +114,7 @@ int update_game(int action)
     // Save player previous location before updating
     Player.px = Player.x;
     Player.py = Player.y;
+    Player.pomnipotent = omnipotent;
 
     // Do different things based on the each action.
     // You can define functions like "go_up()" that get called for each case.
@@ -214,8 +215,10 @@ void draw_game(int init)
 
     // Draw status bars
     draw_upper_status(Player.x, Player.y);
-    if (Player.omnipotent) {
+    if (Player.omnipotent && !Player.pomnipotent) {
         draw_lower_status();
+    } else if (Player.pomnipotent && !Player.omnipotent) {
+        un_lower_status();
     }
 }
 

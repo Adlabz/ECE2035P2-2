@@ -39,6 +39,10 @@ void draw_upper_status(int xx, int yy);
  * Draw the lower status bar.
  */
 void draw_lower_status();
+/**
+ * indicate that omnipotent has been turned off
+ */
+void un_lower_status();
 
 /**
  * Draw the border for the map.
