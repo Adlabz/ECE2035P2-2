@@ -81,13 +81,13 @@ int get_action(GameInputs inputs)
         } else if (absY * 0.9 > absX) {
             if (inputs.ay < 0) {
                 if (north->walkable != 0 || Player.omnipotent){
-                    if (Player.y - 1 > 0) {
+                    if (Player.y + 1 < map_height()) {
                         return GO_UP;
                     }
                 }
             } else {
                 if (south->walkable != 0 || Player.omnipotent){
-                    if (Player.y + 1 < map_height()) {
+                    if (Player.y - 1 > 0) {
                         return GO_DOWN;
                     }
                 }
