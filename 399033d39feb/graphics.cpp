@@ -14,8 +14,8 @@ void draw_player(int u, int v, int key)
 #define DIRT   BROWN
 #define G 0x307400
 #define Y 0x7c8b00
-#define P 0x3c6500
-#define D 0x264000
+#define D 0x3c6500
+#define P 0x264000
 #define C 0xce5505
 #define M 0xdb8a54
 #define S 0xb64901

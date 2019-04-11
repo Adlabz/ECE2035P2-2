@@ -280,6 +280,6 @@ int main()
         // 5. Frame delay
         t.stop();
         int dt = t.read_ms();
-        if (dt < 100) wait_ms(100 - dt);
+        if (dt < 80) wait_ms(80 - dt);
     }
 }
