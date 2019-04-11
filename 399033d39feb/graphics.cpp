@@ -153,8 +153,8 @@ void draw_upper_status(int xx, int yy)
     // Add other status info drawing code here
     char x = xx + '0';
     char y = yy + '0';
-    char s[] = {'x', ':', ' ', x, ',', ' ', 'y', ':', ' ', y, '\0' };
-    uLCD.text_string(s, 3, 0, FONT_7X8, GREEN);
+    char s[] = {'x', ':', ' ', x, ' ', 'y', ':', ' ', y, '\0' };
+    uLCD.text_string(s, 4, 0, FONT_7X8, GREEN);
 }
 
 void draw_lower_status()
@@ -163,7 +163,8 @@ void draw_lower_status()
     uLCD.line(0, 118, 127, 118, GREEN);
 
     // Add other status info drawing code here
-
+    char s[] = {'O','M','N','I','P','O','T','E','N','T','\0' };
+    uLCD.text_string(s, 4, 8, FONT_7X8, GREEN);
 }
 
 void draw_border()
