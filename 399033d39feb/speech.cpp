@@ -35,7 +35,7 @@ void draw_speech_bubble()
 
 void erase_speech_bubble()
 {
-    draw_game(init);
+    draw_game(1);
 }
 
 void draw_speech_line(const char* line, int which)
