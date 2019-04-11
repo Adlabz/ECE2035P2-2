@@ -40,7 +40,7 @@ void erase_speech_bubble()
 
 void draw_speech_line(const char* line, int which)
 {
-    uLCD.text_string((const char*)line, 2, (which)?11:9, FONT_7X8, GREEN);
+    uLCD.text_string((char*)line, 2, (which)?11:9, FONT_7X8, GREEN);
 }
 
 void speech_bubble_wait()
