@@ -154,7 +154,7 @@ void draw_upper_status(int xx, int yy)
     char x = xx + '0';
     char y = yy + '0';
     char s[] = {'x', ':', ' ', x, ',', ' ', 'y', ':', ' ', y, '\0' };
-    uLCD.text_string(s, 1, 4, FONT_7X8, WHITE);
+    uLCD.text_string(s, 3, 0, FONT_7X8, GREEN);
 }
 
 void draw_lower_status()
