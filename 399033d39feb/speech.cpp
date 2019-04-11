@@ -52,7 +52,7 @@ void speech(const char* line1, const char* line2)
     draw_speech_line(line1, TOP);
     draw_speech_line(line2, BOTTOM);
     speech_bubble_wait();
-    erase_speech_bubble();
+    //erase_speech_bubble();
 }
 
 void long_speech(const char* lines[], int n)

@@ -214,14 +214,18 @@ int update_game(int action)
                             "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here."
                         };
                         long_speech(lines, 13);
+                        Player.quest = 1;
+                        draw_game(1);
                     } if (Player.quest && !Player.has_key) {
                         const char* line1 = "Go get them!";
                         const char* line2 = "We need you to";
                         speech(line1, line2);
+                        draw_game(1);
                     } else {
                         const char* line3 = "You did it!";
                         const char* line4 = "K thanks";
                         speech(line3, line4);
+                        draw_game(1);
                     }
                 }
             }
