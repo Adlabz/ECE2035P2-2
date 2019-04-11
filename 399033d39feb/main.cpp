@@ -268,6 +268,7 @@ void init_main_map()
     add_wall(34, 31, HORIZONTAL, 5);
     add_wall(39, 26, VERTICAL, 5);
 
+    add_plant(53, 50);
     //Moving NPC village
     /*
     pc.printf("1\r\n");
