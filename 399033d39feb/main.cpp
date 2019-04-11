@@ -421,7 +421,7 @@ int main()
 
     Player.x = Player.y = 5;
     MovingNPC.x = 43;
-    MovingNPC.y = 35;
+    MovingNPC.y = 37;
 
 
     // Initial drawing
