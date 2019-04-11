@@ -39,17 +39,17 @@ void draw_nothing(int u, int v)
     // Fill a tile with blackness
     int dirtBlock[11 * 11] =
     {
-        G, B, D, Y, G, Y, B, Y, G, Y, G,
-        G, Y, G, Y, G, B, Y, B, G, Y, Y,
-        Y, B, Y, Y, B, Y, Y, G, Y, G, G,
-        G, G, Y, G, Y, G, G, Y, B, Y, G,
-        Y, Y, G, Y, G, Y, G, Y, D, B, D,
-        D, Y, B, Y, B, G, Y, G, Y, Y, B,
-        Y, G, Y, Y, D, B, G, Y, G, B, B,
-        B, Y, B, Y, Y, G, Y, G, Y, Y, B,
-        Y, G, G, G, D, Y, B, Y, G, B, Y,
-        B, Y, G, Y, B, B, Y, G, B, G, B,
-        G, G, Y, G, D, G, B, Y, G, B, G
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, G, G, G, G, G, G, G, G, Y, G,
+        G, G, G, G, G, G, G, G, G, Y, G,
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, G, G, Y, G, G, G, G, G, G, G,
+        G, G, Y, G, Y, G, G, G, G, G, G,
+        G, G, G, G, G, G, G, G, G, G, G
     };
     uLCD.BLIT(u, v, 11, 11, dirtBlock);
 }
