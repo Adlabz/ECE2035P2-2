@@ -111,6 +111,7 @@ void moveNPC() {
         case 1: //S
         case 2: //E
         case 3: //W
+        default: break;
     }
 }
 
