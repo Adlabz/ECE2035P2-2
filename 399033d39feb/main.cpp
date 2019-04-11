@@ -114,7 +114,7 @@ int update_game(int action)
     // Save player previous location before updating
     Player.px = Player.x;
     Player.py = Player.y;
-    Player.pomnipotent = omnipotent;
+    Player.pomnipotent = Player.omnipotent;
 
     // Do different things based on the each action.
     // You can define functions like "go_up()" that get called for each case.
