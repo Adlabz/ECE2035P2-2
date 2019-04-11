@@ -67,4 +67,12 @@ void speech(const char* line1, const char* line2)
 
 void long_speech(const char* lines[], int n)
 {
+    for (int i = 0; i < n; i+=2) {
+        draw_speech_bubble();
+        draw_speech_line(lines[i], TOP);
+        if ((i + 1) < n) {
+            draw_speech_line(lines[i + 1], BOTTOM);
+        }
+        speech_bubble_wait();
+    }
 }
