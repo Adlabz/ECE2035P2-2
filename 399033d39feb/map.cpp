@@ -43,8 +43,8 @@ unsigned map_hash(unsigned key)
 
 void maps_init()
 {
-    map.w = 75;
-    map.h = 75;
+    map.w = 60;
+    map.h = 60;
     HashTable* table = createHashTable(map_hash, 256);
     map.items = table;
 }
@@ -125,17 +125,14 @@ void map_erase(int x, int y)
 
 void add_wall(int x, int y, int dir, int len)
 {
-    pc.printf("In wall add @ (%d, %d)\r\n", x, y);
     for(int i = 0; i < len; i++)
     {
-        pc.printf("In wall add iteration %d\r\n", i);
         MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
         w1->type = WALL;
         w1->draw = draw_wall;
         w1->walkable = false;
         w1->data = NULL;
         unsigned key = (dir == HORIZONTAL) ? XY_KEY(x+i, y) : XY_KEY(x, y+i);
-        pc.printf("At location (%d, %d)", (dir==HORIZONTAL)?x+i:x, (dir==HORIZONTAL)?y:y+i);
         void* val = insertItem(get_active_map()->items, key, w1);
         if (val) free(val); // If something is already there, free it
     }
