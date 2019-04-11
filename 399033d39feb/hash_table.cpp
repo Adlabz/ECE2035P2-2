@@ -265,7 +265,7 @@ void* insertItem(HashTable* hashTable, unsigned int key, void* value) {
     HashTableEntry* thisNode;
 
     if (thisNode = findItem(hashTable, key)) {
-
+        pc.printf("Found Item in table\n");
         void* pointer = thisNode->value;
         thisNode->value = value;
         return pointer;
