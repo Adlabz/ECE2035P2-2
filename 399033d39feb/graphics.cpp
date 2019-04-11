@@ -29,8 +29,8 @@ void draw_player(int u, int v, int key)
         G, G, G, Y, C, G, C, G, G, G, G,
         G, G, Y, G, C, G, C, G, G, G, G,
         G, G, G, C, S, G, S, C, G, G, G
-    }; */
-    uLCD.BLIT(u, v, 11, 11, playerOnDirtBlock);
+    };
+    uLCD.BLIT(u, v, 11, 11, playerOnDirtBlock);*/
     uLCD.pixel(u + 4, v, C);
     uLCD.pixel(u + 4, v + 1, C);
     uLCD.pixel(u + 5, v + 1, C);
