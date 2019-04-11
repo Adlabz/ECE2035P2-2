@@ -2,7 +2,16 @@
 
 #include "globals.h"
 
-
+#define YELLOW 0xEEDD33
+#define BROWN  0xD2691E
+#define DIRT   BROWN
+#define G 0x307400
+#define Y 0x7c8b00
+#define D 0x3c6500
+#define P 0x264000
+#define C 0xce5505
+#define M 0xdb8a54
+#define S 0xb64901
 
 void draw_player(int u, int v, int key)
 {
@@ -23,17 +32,6 @@ void draw_player(int u, int v, int key)
     };
     uLCD.BLIT(u, v, 11, 11, playerOnDirtBlock);
 }
-
-#define YELLOW 0xEEDD33
-#define BROWN  0xD2691E
-#define DIRT   BROWN
-#define G 0x307400
-#define Y 0x7c8b00
-#define D 0x3c6500
-#define P 0x264000
-#define C 0xce5505
-#define M 0xdb8a54
-#define S 0xb64901
 
 void draw_img(int u, int v, const char* img)
 {
