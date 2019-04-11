@@ -153,7 +153,7 @@ void draw_upper_status(int xx, int yy)
     // Add other status info drawing code here
     char x = xx % 10 + '0';
     char x2 = (xx/10) % 10 + '0';
-    char y = yy + '0';
+    char y = yy % 10 + '0';
     char y2 = (yy/10) % 10 + '0';
     char s[] = {'x', ':', ' ', x2, x, ' ', 'y', ':', ' ', y2, y, '\0' };
     uLCD.text_string(s, 4, 0, FONT_7X8, GREEN);
