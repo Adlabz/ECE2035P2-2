@@ -189,6 +189,10 @@ void draw_game(int init)
                         draw = curr_item->draw;
                         if (draw) draw(u, v);
                         draw_player(u, v, Player.has_key);
+                    } if (init || !curr_item) {
+                        draw = draw_nothing;
+                        if (draw) draw(u, v);
+                        draw_player(u, v, Player.has_key);
                     }
                 }
                 continue;
