@@ -13,9 +13,9 @@ void draw_player(int u, int v, int key)
 #define BROWN  0xD2691E
 #define DIRT   BROWN
 #define G 0x307400
-#define B 0x744300
-#define D 0x707070
 #define Y 0x7c8b00
+#define P 0x3c6500
+#define D 0x264000
 
 void draw_img(int u, int v, const char* img)
 {
@@ -36,7 +36,7 @@ void draw_img(int u, int v, const char* img)
 
 void draw_nothing(int u, int v)
 {
-    // Fill a tile with blackness
+    // Fill a tile with grass
     int dirtBlock[11 * 11] =
     {
         G, G, G, G, G, G, G, G, G, G, G,
@@ -61,7 +61,21 @@ void draw_wall(int u, int v)
 
 void draw_plant(int u, int v)
 {
-    uLCD.filled_rectangle(u, v, u+10, v+10, GREEN);
+    int plantBlock[11 * 11] =
+    {
+        P, P, D, P, P, P, D, P, P, P, P,
+        P, D, P, P, P, P, P, D, P, P, P,
+        P, D, P, P, P, P, D, P, P, P, P,
+        D, P, P, P, P, P, P, D, P, P, D,
+        P, P, P, D, P, D, D, P, P, D, P,
+        P, P, P, P, D, P, P, D, D, P, D,
+        P, P, P, D, P, P, P, P, P, P, P,
+        P, P, P, P, D, P, P, P, D, P, P,
+        P, P, P, D, D, P, D, P, P, P, P,
+        P, D, P, P, P, D, P, P, P, D, P,
+        D, P, P, P, D, P, P, P, D, P, D
+    };
+    uLCD.BLIT(u, v, 11, 11, plantBlock);
 }
 
 void draw_upper_status()
