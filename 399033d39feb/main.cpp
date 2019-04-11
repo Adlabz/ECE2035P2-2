@@ -134,9 +134,9 @@ void moveNPC() {
         case 2: //E
             if (east->walkable == 0 || MovingNPC.x + 1 == 65) {
                 MovingNPC.direction = 0;
-            } else if (south->walkable != 0) {
-                MovingNPC.direction = 1;
-                MovingNPC.y -= 1;
+            } else if (north->walkable != 0) {
+                MovingNPC.direction = 0;
+                MovingNPC.y += 1;
             } else {
                 MovingNPC.x += 1;
             }
@@ -144,9 +144,9 @@ void moveNPC() {
         case 3: //W
             if (west->walkable == 0 || MovingNPC.x - 1 == 35) {
                 MovingNPC.direction = 1;
-            } else if (north->walkable != 0) {
-                MovingNPC.direction = 0;
-                MovingNPC.y += 1;
+            } else if (south->walkable != 0) {
+                MovingNPC.direction = 1;
+                MovingNPC.y -= 1;
             } else {
                 MovingNPC.x -= 1;
             }
