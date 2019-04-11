@@ -269,9 +269,9 @@ void init_main_map()
     add_wall(38, 26, VERTICAL, 5);
 
     //Moving NPC village
+    /*
     add_wall(50, 50, VERTICAL, 20);
     add_wall(50, 50, HORIZONTAL, 10);
-    /*
     add_wall(59, 50, VERTICAL, 5);
     add_wall(58, 54, HORIZONTAL, 2);
     add_wall(57, 55, HORIZONTAL, 1);
