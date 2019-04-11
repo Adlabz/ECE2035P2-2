@@ -123,19 +123,15 @@ int update_game(int action)
         case GO_UP:
             Player.y = Player.y + 1;
             return FULL_DRAW;
-            break;
         case GO_LEFT:
             Player.x = Player.x - 1;
             return FULL_DRAW;
-            break;
         case GO_DOWN:
             Player.y = Player.y - 1;
             return FULL_DRAW;
-            break;
         case GO_RIGHT:
             Player.x = Player.x + 1;
             return FULL_DRAW;
-            break;
         case ACTION_BUTTON: break;
         case MENU_BUTTON: break;
         case OMNI:
