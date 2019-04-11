@@ -138,7 +138,11 @@ int update_game(int action)
         case ACTION_BUTTON: break;
         case MENU_BUTTON: break;
         case OMNI:
-            Player.omnipotent = 1;
+            if (Player.omnipotent) {
+                Player.omnipotent = 0;
+            } else {
+                Player.omnipotent = 1;
+            }
             break;
         default:        break;
     }
