@@ -209,7 +209,7 @@ void draw_game(int init)
     }
 
     // Draw status bars
-    draw_upper_status();
+    draw_upper_status(Player.x, Player.y);
     draw_lower_status();
 }
 

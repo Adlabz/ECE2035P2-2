@@ -145,14 +145,14 @@ void draw_plant(int u, int v)
     uLCD.BLIT(u, v, 11, 11, plantBlock);
 }
 
-void draw_upper_status()
+void draw_upper_status(int xx, int yy)
 {
     // Draw bottom border of status bar
     uLCD.line(0, 9, 127, 9, GREEN);
 
     // Add other status info drawing code here
-    char x = Player.x + '0';
-    char y = Player.y + '0';
+    char x = xx + '0';
+    char y = yy + '0';
     char[] s = {'x', ':', ' ', x, ',', ' ', 'y', ':', ' ', y };
     uLCD.text_string(s, 1, 4, FONT_7X8, WHITE);
 }
