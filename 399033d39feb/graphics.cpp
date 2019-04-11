@@ -151,6 +151,10 @@ void draw_upper_status()
     uLCD.line(0, 9, 127, 9, GREEN);
 
     // Add other status info drawing code here
+    char x = Player.x + '0';
+    char y = Player.y + '0';
+    char[] s = {'x', ':', ' ', x, ',', ' ', 'y', ':', ' ', y };
+    uLCD.text_string(s, 1, 4, FONT_7X8, WHITE);
 }
 
 void draw_lower_status()
@@ -159,6 +163,7 @@ void draw_lower_status()
     uLCD.line(0, 118, 127, 118, GREEN);
 
     // Add other status info drawing code here
+
 }
 
 void draw_border()
