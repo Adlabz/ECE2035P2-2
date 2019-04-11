@@ -283,7 +283,6 @@ void init_main_map()
     add_wall(41, 53, VERTICAL, 1);
     add_wall(42, 54, HORIZONTAL, 1);
     add_wall(35, 54, HORIZONTAL, 7);
-    */
     pc.printf("Walls done!\r\n");
 
 
