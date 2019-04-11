@@ -300,7 +300,7 @@ void init_main_map()
     for (int z = 0; z < 25; z++) {
         for (int a = 0; a < 25; a++) {
             if (wallxy[z][a] == 'W') {
-                add_wall(34 + z, 34 + a, VERTICAL, 1);
+                add_wall(34 + a, 34 + z, VERTICAL, 1);
             }
         }
     }
