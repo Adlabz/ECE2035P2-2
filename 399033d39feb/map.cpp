@@ -135,6 +135,7 @@ void add_wall(int x, int y, int dir, int len)
         w1->walkable = false;
         w1->data = NULL;
         unsigned key = (dir == HORIZONTAL) ? XY_KEY(x+i, y) : XY_KEY(x, y+i);
+        pc.printf("At location (%d, %d)", (dir==HORIZONTAL)?x+i:x, (dir==HORIZONTAL)?y:y+i);
         void* val = insertItem(get_active_map()->items, key, w1);
         if (val) free(val); // If something is already there, free it
     }
