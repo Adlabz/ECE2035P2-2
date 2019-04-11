@@ -211,8 +211,8 @@ int update_game(int action)
                 if (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y) {
                     if (!Player.quest) {
                         char* lines[13] = {
-                            "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here.";
-                        }
+                            "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here."
+                        };
                         long_speech(lines, 13);
                     } if (Player.quest && !Player.has_key) {
                         char* line1 = "Go get them!";
