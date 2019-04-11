@@ -125,8 +125,10 @@ void map_erase(int x, int y)
 
 void add_wall(int x, int y, int dir, int len)
 {
+    pc.printf("In wall add @ (%d, %d)\r\n", x, y);
     for(int i = 0; i < len; i++)
     {
+        pc.printf("In wall add iteration %d\r\n", i);
         MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
         w1->type = WALL;
         w1->draw = draw_wall;
