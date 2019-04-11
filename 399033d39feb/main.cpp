@@ -250,7 +250,9 @@ void init_main_map()
     add_wall(0,              0,              VERTICAL,   map_height());
     add_wall(map_width()-1,  0,              VERTICAL,   map_height());
 
-    add_wall(10,              0,              VERTICAL,   map_height());
+    add_wall(0, 8, HORIZONTAL, 16);
+    add_wall(0, 18, HORIZONTAL, 16);
+    add_wall(16, 8, VERTICAL, 8);
 
     pc.printf("Walls done!\r\n");
 
