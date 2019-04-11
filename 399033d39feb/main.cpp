@@ -269,6 +269,7 @@ void init_main_map()
     add_wall(39, 26, VERTICAL, 5);
 
     //Moving NPC village
+    /*
     pc.printf("1\r\n");
     add_wall(50, 50, VERTICAL, 19);
     pc.printf("2\r\n");
@@ -297,7 +298,7 @@ void init_main_map()
     add_wall(57, 69, HORIZONTAL, 1);
     pc.printf("14\r\n");
     add_wall(50, 69, HORIZONTAL, 7);
-
+    */
     pc.printf("Walls done!\r\n");
 
 
