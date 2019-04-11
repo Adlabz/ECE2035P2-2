@@ -24,8 +24,7 @@ struct {
 } Player;
 
 struct {
-    int x = 44;
-    int y = 35;
+    int x, y;
     int px, py;
     int direction; // 0 up 1 down 2 right 3 left
 } MovingNPC;
@@ -384,6 +383,8 @@ int main()
     set_active_map(0);
 
     Player.x = Player.y = 5;
+    MovingNPC.x = 44;
+    MovingNPC.y = 35;
 
 
     // Initial drawing
