@@ -46,6 +46,7 @@ void speech_bubble_wait()
 {
     GameInputs inputs = read_inputs();
     while (inputs.b1 != 0) {
+        inputs = read_inputs();
         //wait lmao
     }
 }
