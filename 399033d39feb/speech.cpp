@@ -45,6 +45,10 @@ void draw_speech_line(const char* line, int which)
 void speech_bubble_wait()
 {
     GameInputs inputs = read_inputs();
+    while (inputs.b1 == 0) { //if button is held down wait until player unpresses it
+        inputs = read_inputs();
+        //wait lmao
+    }
     while (inputs.b1 != 0) {
         inputs = read_inputs();
         //wait lmao
