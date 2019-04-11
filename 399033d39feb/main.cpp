@@ -220,7 +220,7 @@ void draw_game(int init)
                         draw_player(u, v, Player.has_key);
                 }
                 continue;
-            } else if (x = MovingNPC.x && y = MovingNPC.y) {
+            } else if (x == MovingNPC.x && y == MovingNPC.y) {
                 draw = draw_NPC;
             }
             else if (x >= 0 && y >= 0 && x < map_width() && y < map_height()) // Current (i,j) in the map
