@@ -15,8 +15,8 @@
 
 void draw_player(int u, int v, int key)
 {
-    // Fill a tile with grass
-    int playerOnDirtBlock[11 * 11] =
+    // Draw just the player
+    /* int playerOnDirtBlock[11 * 11] =
     {
         G, G, G, G, C, G, G, G, G, G, G,
         G, Y, G, G, C, C, G, G, G, G, G,
@@ -29,8 +29,45 @@ void draw_player(int u, int v, int key)
         G, G, G, Y, C, G, C, G, G, G, G,
         G, G, Y, G, C, G, C, G, G, G, G,
         G, G, G, C, S, G, S, C, G, G, G
-    };
+    }; */
     uLCD.BLIT(u, v, 11, 11, playerOnDirtBlock);
+    uLCD.pixel(u + 4, v, C);
+    uLCD.pixel(u + 4, v + 1, C);
+    uLCD.pixel(u + 5, v + 1, C);
+    uLCD.pixel(u + 3, v + 2, S);
+    uLCD.pixel(u + 4, v + 2, C);
+    uLCD.pixel(u + 5, v + 2, C);
+    uLCD.pixel(u + 6, v + 2, C);
+    uLCD.pixel(u + 4, v + 3, M);
+    uLCD.pixel(u + 5, v + 3, M);
+    uLCD.pixel(u + 4, v + 4, M);
+    uLCD.pixel(u + 5, v + 4, M);
+    uLCD.pixel(u + 2, v + 5, C);
+    uLCD.pixel(u + 3, v + 5, C);
+    uLCD.pixel(u + 4, v + 5, C);
+    uLCD.pixel(u + 5, v + 5, S);
+    uLCD.pixel(u + 6, v + 5, C);
+    uLCD.pixel(u + 7, v + 5, C);
+    uLCD.pixel(u + 1, v + 6, C);
+    uLCD.pixel(u + 2, v + 6, C);
+    uLCD.pixel(u + 4, v + 6, C);
+    uLCD.pixel(u + 5, v + 6, S);
+    uLCD.pixel(u + 7, v + 6, C);
+    uLCD.pixel(u + 8, v + 6, C);
+    uLCD.pixel(u + 9, v + 6, C);
+    uLCD.pixel(u, v + 7, C);
+    uLCD.pixel(u, v + 7, C);
+    uLCD.pixel(u, v + 7, C);
+    uLCD.pixel(u, v + 7, S);
+    uLCD.pixel(u, v + 7, S);
+    uLCD.pixel(u, v + 8, C);
+    uLCD.pixel(u, v + 8, C);
+    uLCD.pixel(u, v + 9, C);
+    uLCD.pixel(u, v + 9, C);
+    uLCD.pixel(u + 3, v + 10, C);
+    uLCD.pixel(u + 4, v + 10, S);
+    uLCD.pixel(u + 6, v + 10, S);
+    uLCD.pixel(u + 7, v + 10, C);
 }
 
 void draw_img(int u, int v, const char* img)
