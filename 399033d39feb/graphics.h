@@ -23,7 +23,7 @@ void draw_player(int u, int v, int key);
 void draw_img(int u, int v, const char* img);
 
 /**
- * DrawFunc functions. 
+ * DrawFunc functions.
  * These can be used as the MapItem draw functions.
  */
 void draw_nothing(int u, int v);
@@ -33,11 +33,11 @@ void draw_plant(int u, int v);
 /**
  * Draw the upper status bar.
  */
-void draw_upper_status();
+void draw_upper_status(int xx, int yy);
 
 /**
  * Draw the lower status bar.
- */ 
+ */
 void draw_lower_status();
 
 /**
