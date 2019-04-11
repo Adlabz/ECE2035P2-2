@@ -20,6 +20,7 @@ struct {
     int x,y;    // Current locations
     int px, py; // Previous locations
     int has_key;
+    int omnipotent;
 } Player;
 
 /**
@@ -33,6 +34,7 @@ struct {
 #define GO_RIGHT 4
 #define GO_UP 5
 #define GO_DOWN 6
+#define OMNI 7
 int get_action(GameInputs inputs)
 {
     if (inputs.b1 == 0) {
@@ -40,6 +42,9 @@ int get_action(GameInputs inputs)
     }
     if (inputs.b2 == 0) {
         return MENU_BUTTON;
+    }
+    if (inputs.b3 == 0) {
+        return OMNI;
     }
     double absX = inputs.ax;
     if (inputs.ax < 0) {
@@ -61,22 +66,30 @@ int get_action(GameInputs inputs)
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
             if (inputs.ax < 0) {
-                if (west->walkable != 0){
-                    return GO_LEFT;
+                if (west->walkable != 0 || Player.omnipotent){
+                    if (Player.x - 1 > 0) {
+                        return GO_LEFT;
+                    }
                 }
             } else {
-                if (east->walkable != 0){
-                    return GO_RIGHT;
+                if (east->walkable != 0 || Player.omnipotent){
+                    if (Player.x + 1 < map_width()) {
+                        return GO_RIGHT;
+                    }
                 }
             }
         } else if (absY * 0.9 > absX) {
             if (inputs.ay < 0) {
-                if (north->walkable != 0){
-                    return GO_UP;
+                if (north->walkable != 0 || Player.omnipotent){
+                    if (Player.y - 1 > 0) {
+                        return GO_UP;
+                    }
                 }
             } else {
-                if (south->walkable != 0){
-                    return GO_DOWN;
+                if (south->walkable != 0 || Player.omnipotent){
+                    if (Player.y + 1 < map_height()) {
+                        return GO_DOWN;
+                    }
                 }
             }
         }
@@ -124,6 +137,9 @@ int update_game(int action)
             break;
         case ACTION_BUTTON: break;
         case MENU_BUTTON: break;
+        case OMNI:
+            Player.omnipotent = 1;
+            break;
         default:        break;
     }
     return NO_RESULT;
@@ -221,6 +237,8 @@ void init_main_map()
     add_wall(0,              map_height()-1, HORIZONTAL, map_width());
     add_wall(0,              0,              VERTICAL,   map_height());
     add_wall(map_width()-1,  0,              VERTICAL,   map_height());
+
+    add_wall(10,              0,              VERTICAL,   map_height());
 
     pc.printf("Walls done!\r\n");
 
