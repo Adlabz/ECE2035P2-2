@@ -125,7 +125,26 @@ void draw_wall(int u, int v)
     };
     uLCD.BLIT(u, v, 11, 11, brickBlock);
 }
-
+#define B 0x0050bb
+#define Z 0x3a8eff
+void draw_NPC(int u, int v)
+{
+    int NPCBlock[11 * 11] =
+    {
+        B, B, B, B, B, B, B, B, B, B, B,
+        B, Z, Z, Z, Z, Z, Z, Z, Z, Z, B,
+        B, Z, Z, Z, B, B, B, Z, Z, Z, B,
+        B, Z, Z, Z, B, B, B, Z, Z, Z, B,
+        B, Z, Z, Z, B, B, B, Z, Z, Z, B,
+        B, Z, B, Z, Z, B, Z, Z, B, Z, B,
+        B, Z, Z, B, B, B, B, B, Z, Z, B,
+        B, Z, Z, Z, Z, B, Z, Z, Z, Z, B,
+        B, Z, Z, Z, Z, B, Z, Z, Z, Z, B,
+        B, Z, Z, Z, B, Z, B, Z, Z, Z, B,
+        B, B, B, B, B, B, B, B, B, B, B
+    };
+    uLCD.BLIT(u, v, 11, 11, NPCBlock);
+}
 void draw_plant(int u, int v)
 {
     int plantBlock[11 * 11] =

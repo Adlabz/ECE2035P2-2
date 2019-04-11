@@ -23,6 +23,13 @@ struct {
     int omnipotent, pomnipotent;
 } Player;
 
+struct {
+    int x = 44;
+    int y = 35;
+    int px, py;
+    int direction; // 0 up 1 down 2 right 3 left
+} MovingNPC;
+
 /**
  * Given the game inputs, determine what kind of update needs to happen.
  * Possbile return values are defined below.
@@ -96,6 +103,17 @@ int get_action(GameInputs inputs)
     }
     return NO_ACTION;
 }
+/**
+ * Moves the moving npc every time a player moves 2 blocks
+ */
+void moveNPC() {
+    switch(MovingNPC.direction) {
+        case 0: //N
+        case 1: //S
+        case 2: //E
+        case 3: //W
+    }
+}
 
 /**
  * Update the game state based on the user action. For example, if the user
@@ -115,6 +133,8 @@ int update_game(int action)
     Player.px = Player.x;
     Player.py = Player.y;
     Player.pomnipotent = Player.omnipotent;
+    MovingNPC.px = MovingNPC.x;
+    MovingNPC.py = MovingNPC.y;
 
     // Do different things based on the each action.
     // You can define functions like "go_up()" that get called for each case.
@@ -122,15 +142,27 @@ int update_game(int action)
     {
         case GO_UP:
             Player.y = Player.y + 1;
+            if ((Player.x + Player.y)%2) {
+                moveNPC();
+            }
             return FULL_DRAW;
         case GO_LEFT:
             Player.x = Player.x - 1;
+            if ((Player.x + Player.y)%2) {
+                moveNPC();
+            }
             return FULL_DRAW;
         case GO_DOWN:
             Player.y = Player.y - 1;
+            if ((Player.x + Player.y)%2) {
+                moveNPC();
+            }
             return FULL_DRAW;
         case GO_RIGHT:
             Player.x = Player.x + 1;
+            if ((Player.x + Player.y)%2) {
+                moveNPC();
+            }
             return FULL_DRAW;
         case ACTION_BUTTON: break;
         case MENU_BUTTON: break;
@@ -189,6 +221,8 @@ void draw_game(int init)
                         draw_player(u, v, Player.has_key);
                 }
                 continue;
+            } else if (x = MovingNPC.x && y = MovingNPC.y) {
+                draw = draw_NPC;
             }
             else if (x >= 0 && y >= 0 && x < map_width() && y < map_height()) // Current (i,j) in the map
             {
