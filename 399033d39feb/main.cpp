@@ -184,9 +184,10 @@ void draw_game(int init)
                 MapItem* prev_item = get_here(px, py);
                 if (init || curr_item != prev_item) // Only draw if they're different
                 {
-                    if (curr_item) // There's something here! Draw it
+                    if (curr_item || init) // There's something here! Draw it
                     {
                         draw = curr_item->draw;
+                        if (draw) draw(u, v);
                         draw_player(u, v, Player.has_key);
                     }
                 }
