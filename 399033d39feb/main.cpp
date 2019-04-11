@@ -250,13 +250,23 @@ void init_main_map()
     add_wall(0,              0,              VERTICAL,   map_height());
     add_wall(map_width()-1,  0,              VERTICAL,   map_height());
 
+    //top section of map
     add_wall(0, 8, HORIZONTAL, 16);
     add_wall(0, 18, HORIZONTAL, 16);
-    add_wall(16, 8, VERTICAL, 10);
+    add_wall(16, 8, VERTICAL, 11);
     add_wall(20, 0, VERTICAL, 18);
     add_wall(24, 0, VERTICAL, 22);
-    add_wall(4, 22, HORIZONTAL, 20);
-    add_wall(26, 0, HORIZONTAL, 80);
+    add_wall(4, 22, HORIZONTAL, 21);
+    add_wall(0, 26, HORIZONTAL, 80);
+
+    //bumpy surface on major wall
+    add_wall(20, 26, VERTICAL, 5);
+    add_wall(20, 31, HORIZONTAL, 5);
+    add_wall(25, 31, VERTICAL, 5);
+    add_wall(25, 36, HORIZONTAL, 10);
+    add_wall(35, 31, VERTICAL, 5);
+    add_wall(40, 31, HORIZONTAL, 5);
+    add_wall(40, 26, VERTICAL, 5);
 
     pc.printf("Walls done!\r\n");
 
