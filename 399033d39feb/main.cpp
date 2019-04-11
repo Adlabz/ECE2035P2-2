@@ -116,6 +116,7 @@ void moveNPC() {
                 MovingNPC.direction = 2;
             } else if (west->walkable != 0) {
                 MovingNPC.direction = 3;
+                MovingNPC.x -= 1;
             } else {
                 MovingNPC.y += 1;
             }
@@ -125,6 +126,7 @@ void moveNPC() {
                 MovingNPC.direction = 3;
             } else if (east->walkable != 0) {
                 MovingNPC.direction = 2;
+                MovingNPC.x += 1;
             } else {
                 MovingNPC.y -= 1;
             }
@@ -134,6 +136,7 @@ void moveNPC() {
                 MovingNPC.direction = 0;
             } else if (south->walkable != 0) {
                 MovingNPC.direction = 1;
+                MovingNPC.y -= 1;
             } else {
                 MovingNPC.x += 1;
             }
@@ -143,6 +146,7 @@ void moveNPC() {
                 MovingNPC.direction = 1;
             } else if (north->walkable != 0) {
                 MovingNPC.direction = 0;
+                MovingNPC.y += 1;
             } else {
                 MovingNPC.x -= 1;
             }
