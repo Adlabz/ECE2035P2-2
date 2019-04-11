@@ -29,10 +29,13 @@ static void speech_bubble_wait();
 
 void draw_speech_bubble()
 {
+    uLCD.filled_rectangle(0, 50, 127, 117, GREEN);
+    uLCD.rectangle(3, 53, 124, 114, BLACK);
 }
 
 void erase_speech_bubble()
 {
+    draw_game(init);
 }
 
 void draw_speech_line(const char* line, int which)

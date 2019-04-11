@@ -21,6 +21,7 @@ struct {
     int px, py; // Previous locations
     int has_key;
     int omnipotent, pomnipotent;
+    int quest; //if player has quest
 } Player;
 
 struct {
@@ -167,6 +168,7 @@ void moveNPC() {
 #define NO_RESULT 0
 #define GAME_OVER 1
 #define FULL_DRAW 2
+#define NPC1 3
 int update_game(int action)
 {
     // Save player previous location before updating
@@ -204,7 +206,26 @@ int update_game(int action)
                 moveNPC();
             }
             return FULL_DRAW;
-        case ACTION_BUTTON: break;
+        case ACTION_BUTTON:
+            if (Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x) {
+                if (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y) {
+                    if (!Player.quest) {
+                        char* lines[13] = {
+                            "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here.";
+                        }
+                        long_speech(lines, 13);
+                    } if (Player.quest && !Player.has_key) {
+                        char* line1 = "Go get them!";
+                        char* line2 = "We need you to";
+                        speech(line1, line2);
+                    } else {
+                        char* line1 = "You did it!";
+                        char* line2 = "K thanks";
+                        speech(line1, line2);
+                    }
+                }
+            }
+            break;
         case MENU_BUTTON: break;
         case OMNI:
             if (Player.omnipotent) {
@@ -423,7 +444,7 @@ int main()
     // Initialize game state
     set_active_map(0);
 
-    Player.x = Player.y = 40;
+    Player.x = Player.y = 43;
     MovingNPC.x = 43;
     MovingNPC.y = 37;
 
