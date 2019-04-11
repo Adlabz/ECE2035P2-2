@@ -6,7 +6,22 @@
 
 void draw_player(int u, int v, int key)
 {
-    uLCD.filled_rectangle(u, v, u+11, v+11, RED);
+    // Fill a tile with grass
+    int playerOnDirtBlock[11 * 11] =
+    {
+        G, G, G, G, C, G, G, G, G, G, G,
+        G, Y, G, G, C, C, G, G, G, G, G,
+        G, G, Y, S, C, C, C, Y, G, G, G,
+        G, G, G, G, M, M, G, G, G, G, G,
+        G, G, G, G, M, M, G, G, G, Y, G,
+        G, G, C, C, C, S, C, C, G, Y, G,
+        G, C, C, G, C, S, G, C, C, C, G,
+        C, C, G, G, C, S, G, G, S, G, G,
+        G, G, G, Y, C, G, C, G, G, G, G,
+        G, G, Y, G, C, G, C, G, G, G, G,
+        G, G, G, C, S, G, S, C, G, G, G
+    };
+    uLCD.BLIT(u, v, 11, 11, playerOnDirtBlock);
 }
 
 #define YELLOW 0xEEDD33
