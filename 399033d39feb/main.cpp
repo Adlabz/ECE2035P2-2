@@ -423,7 +423,7 @@ int main()
     // Initialize game state
     set_active_map(0);
 
-    Player.x = Player.y = 5;
+    Player.x = Player.y = 40;
     MovingNPC.x = 43;
     MovingNPC.y = 37;
 
