@@ -338,7 +338,7 @@ int main()
     // Main game loop
     while(1)
     {
-        pc.printf("made it into loop\n");
+        //pc.printf("made it into loop\n");
         // Timer to measure game update speed
         Timer t; t.start();
 
