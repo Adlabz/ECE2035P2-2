@@ -178,16 +178,11 @@ void draw_game(int init)
 
             // Figure out what to draw
             DrawFunc draw = NULL;
-            if (i == 0 && j == 0) // Only draw the player on init
+            if (i == 0 && j == 0)
             {
-                MapItem* curr_item = get_here(x, y);
-                MapItem* prev_item = get_here(px, py);
-                if (init || curr_item != prev_item) // Only draw if they're different or init
-                {
                     draw = draw_nothing;
                     draw(u, v);
                     draw_player(u, v, Player.has_key);
-                }
                 continue;
             }
             else if (x >= 0 && y >= 0 && x < map_width() && y < map_height()) // Current (i,j) in the map
