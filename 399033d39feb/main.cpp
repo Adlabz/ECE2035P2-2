@@ -72,27 +72,27 @@ int get_action(GameInputs inputs)
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
             if (inputs.ax < 0) {
-                if (west->walkable != 0 || Player.omnipotent){
+                if ((west->walkable != 0 || Player.omnipotent) && !(Player.x - 1 == MovingNPC.x && Player.y == MovingNPC.y)){
                     if (Player.x - 1 > 0) {
                         return GO_LEFT;
                     }
                 }
             } else {
-                if (east->walkable != 0 || Player.omnipotent){
-                    if (Player.x + 1 < map_width()) {
+                if ((east->walkable != 0 || Player.omnipotent) && !(Player.x + 1 == MovingNPC.x && Player.y == MovingNPC.y)){
+                    if (Player.x + 1 < map_width() - 1) {
                         return GO_RIGHT;
                     }
                 }
             }
         } else if (absY * 0.9 > absX) {
             if (inputs.ay < 0) {
-                if (north->walkable != 0 || Player.omnipotent){
-                    if (Player.y + 1 < map_height()) {
+                if ((north->walkable != 0 || Player.omnipotent) && !(Player.x == MovingNPC.x && Player.y + 1 == MovingNPC.y)){
+                    if (Player.y + 1 < map_height() - 1) {
                         return GO_UP;
                     }
                 }
             } else {
-                if (south->walkable != 0 || Player.omnipotent){
+                if ((south->walkable != 0 || Player.omnipotent) && !(Player.x == MovingNPC.x && Player.y - 1 == MovingNPC.y)){
                     if (Player.y - 1 > 0) {
                         return GO_DOWN;
                     }
@@ -106,11 +106,47 @@ int get_action(GameInputs inputs)
  * Moves the moving npc every time a player moves 2 blocks
  */
 void moveNPC() {
+    MapItem* north = get_north(MovingNPC.x, MovingNPC.y);
+    MapItem* south = get_south(MovingNPC.x, MovingNPC.y);
+    MapItem* east = get_east(MovingNPC.x, MovingNPC.y);
+    MapItem* west = get_west(MovingNPC.x, MovingNPC.y);
     switch(MovingNPC.direction) {
         case 0: //N
+            if (north->walkable == 0 || MovingNPC.y + 1 == 60) {
+                MovingNPC.direction = 3;
+            } else if (east->walkable != 0) {
+                MovingNPC.direction = 2;
+            } else {
+                MovingNPC.y += 1;
+            }
+            break;
         case 1: //S
+            if (south->walkable == 0 || MovingNPC.y - 1 == 35) {
+                MovingNPC.direction = 2;
+            } else if (west->walkable != 0) {
+                MovingNPC.direction = 3;
+            } else {
+                MovingNPC.y -= 1;
+            }
+            break;
         case 2: //E
+            if (east->walkable == 0 || MovingNPC.x + 1 == 65) {
+                MovingNPC.direction = 0;
+            } else if (south->walkable != 0) {
+                MovingNPC.direction = 1;
+            } else {
+                MovingNPC.x += 1;
+            }
+            break;
         case 3: //W
+            if (west->walkable == 0 || MovingNPC.x - 1 == 35) {
+                MovingNPC.direction = 1;
+            } else if (north->walkable != 0) {
+                MovingNPC.direction = 0;
+            } else {
+                MovingNPC.x -= 1;
+            }
+            break;
         default: break;
     }
 }
@@ -384,7 +420,7 @@ int main()
     set_active_map(0);
 
     Player.x = Player.y = 5;
-    MovingNPC.x = 44;
+    MovingNPC.x = 43;
     MovingNPC.y = 35;
 
 
