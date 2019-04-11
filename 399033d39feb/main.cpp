@@ -177,7 +177,7 @@ void draw_game(int init)
 
             // Figure out what to draw
             DrawFunc draw = NULL;
-            if (init && i == 0 && j == 0) // Only draw the player on init
+            if (i == 0 && j == 0) // Only draw the player on init
             {
                 draw_player(u, v, Player.has_key);
                 continue;
