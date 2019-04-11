@@ -260,14 +260,30 @@ void init_main_map()
     add_wall(0, 26, HORIZONTAL, 50);
 
     //bumpy surface on major wall
-
     add_wall(20, 26, VERTICAL, 5);
     add_wall(20, 31, HORIZONTAL, 5);
     add_wall(25, 31, VERTICAL, 5);
     add_wall(25, 36, HORIZONTAL, 10);
     add_wall(34, 31, VERTICAL, 5);
     add_wall(34, 31, HORIZONTAL, 5);
-    add_wall(39, 26, VERTICAL, 5);
+    add_wall(38, 26, VERTICAL, 5);
+
+    //Moving NPC village
+    add_wall(50, 50, VERTICAL, 20);
+    add_wall(50, 50, HORIZONTAL, 10);
+    add_wall(59, 50, VERTICAL, 5);
+    add_wall(58, 54, HORIZONTAL, 2);
+    add_wall(57, 55, HORIZONTAL, 1);
+    add_wall(56, 56, HORIZONTAL, 1);
+    add_wall(55, 56, VERTICAL, 1);
+    add_wall(54, 58, VERTICAL, 3);
+    add_wall(53, 61, VERTICAL, 3);
+    add_wall(54, 63, VERTICAL, 3);
+    add_wall(55, 67, VERTICAL, 1);
+    add_wall(56, 68, VERTICAL, 1);
+    add_wall(57, 69, HORIZONTAL, 1);
+    add_wall(50, 69, HORIZONTAL, 8);
+
     pc.printf("Walls done!\r\n");
 
 
