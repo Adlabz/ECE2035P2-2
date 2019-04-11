@@ -16,6 +16,9 @@ void draw_player(int u, int v, int key)
 #define Y 0x7c8b00
 #define P 0x3c6500
 #define D 0x264000
+#define C 0xce5505
+#define M 0xdb8a54
+#define S 0xb64901
 
 void draw_img(int u, int v, const char* img)
 {
@@ -56,7 +59,21 @@ void draw_nothing(int u, int v)
 
 void draw_wall(int u, int v)
 {
-    uLCD.filled_rectangle(u, v, u+10, v+10, BROWN);
+    int brickBlock[11 * 11] =
+    {
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, C, S, M, C, C, C, C, C, C,
+        C, C, C, S, M, C, C, C, C, C, C,
+        C, S, S, S, M, C, C, C, C, C, C,
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, C, C, C, C, S, M, C, C, C,
+        C, C, C, C, C, C, S, M, C, C, C,
+        C, C, C, C, S, S, S, M, C, C, C,
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, M, C, C, C, C, C, C, C, S,
+        C, C, M, C, C, C, C, C, C, S, S
+    };
+    uLCD.BLIT(u, v, 11, 11, brickBlock);
 }
 
 void draw_plant(int u, int v)
