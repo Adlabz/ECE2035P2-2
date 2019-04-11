@@ -12,6 +12,10 @@ void draw_player(int u, int v, int key)
 #define YELLOW 0xEEDD33
 #define BROWN  0xD2691E
 #define DIRT   BROWN
+#define G 0x307400
+#define B 0x744300
+#define D 0x707070
+#define Y 0x7c8b00
 
 void draw_img(int u, int v, const char* img)
 {
@@ -32,16 +36,22 @@ void draw_img(int u, int v, const char* img)
 
 void draw_nothing(int u, int v)
 {
-    // Fill a tile with my grass
-    uLCD.filled_rectangle(u, v, u+10, v+10, 0x60a300);
-    uLCD.pixel(u + 1, v + 1, 0x7ed600);
-    uLCD.pixel(u + 2, v + 2, 0x7ed600);
-    uLCD.pixel(u + 6, v + 2, 0x7ed600);
-    uLCD.pixel(u + 8, v + 4, 0x7ed600);
-    uLCD.pixel(u + 8, v + 5, 0x7ed600);
-    uLCD.pixel(u + 2, v + 8, 0x7ed600);
-    uLCD.pixel(u + 3, v + 7, 0x7ed600);
-    uLCD.pixel(u + 4, v + 8, 0x7ed600);
+    // Fill a tile with blackness
+    int dirtBlock[11][11] =
+    {
+        {G, B, D, Y, G, Y, B, Y, G, Y, G},
+        {G, Y, G, Y, G, B, Y, B, G, Y, Y},
+        {Y, B, Y, Y, B, Y, Y, G, Y, G, G},
+        {G, G, Y, G, Y, G, G, Y, B, Y, G},
+        {Y, Y, G, Y, G, Y, G, Y, D, B, D},
+        {D, Y, B, Y, B, G, Y, G, Y, Y, B},
+        {Y, G, Y, Y, D, B, G, Y, G, B, B},
+        {B, Y, B, Y, Y, G, Y, G, Y, Y, B},
+        {Y, G, G, G, D, Y, B, Y, G, B, Y},
+        {B, Y, G, Y, B, B, Y, G, B, G, B},
+        {G, G, Y, G, D, G, B, Y, G, B, G}
+    };
+    uLCD.BLIT(u, v, 11, 11, dirtBlock);
 }
 
 void draw_wall(int u, int v)
