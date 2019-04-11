@@ -210,18 +210,18 @@ int update_game(int action)
             if (Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x) {
                 if (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y) {
                     if (!Player.quest) {
-                        char* lines[13] = {
+                        const char* lines[13] = {
                             "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here."
                         };
                         long_speech(lines, 13);
                     } if (Player.quest && !Player.has_key) {
-                        char* line1 = "Go get them!";
-                        char* line2 = "We need you to";
+                        const char* line1 = "Go get them!";
+                        const char* line2 = "We need you to";
                         speech(line1, line2);
                     } else {
-                        char* line1 = "You did it!";
-                        char* line2 = "K thanks";
-                        speech(line1, line2);
+                        const char* line3 = "You did it!";
+                        const char* line4 = "K thanks";
+                        speech(line3, line4);
                     }
                 }
             }
