@@ -274,7 +274,9 @@ void init_main_map()
     pc.printf("1\r\n");
     add_wall(50, 50, VERTICAL, 19);
     pc.printf("2\r\n");
+    */
     add_wall(51, 50, HORIZONTAL, 8);
+    /*
     pc.printf("3\r\n");
     add_wall(59, 50, VERTICAL, 4);
     pc.printf("4\r\n");
