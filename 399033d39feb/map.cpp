@@ -251,21 +251,3 @@ void add_cave_floor(int x, int y)
     if (val) free(val); // If something is already there, free it
 
 }
-
-void add_cave_lava(int x, int y)
-{
-
-    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
-
-    w1->type = CAVE_LAVA;
-
-    w1->draw = draw_cave_lava;
-
-    w1->walkable = false;
-
-
-    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
-
-    if (val) free(val); // If something is already there, free it
-
-}
