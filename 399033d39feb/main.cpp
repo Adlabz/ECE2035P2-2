@@ -346,6 +346,7 @@ void draw_game(int init)
                                 const char* line3 = "You lost!";
                                 const char* line4 = "Try again...";
                                 speech(line3, line4);
+                                wait_ms(100000);
                                 exit(1);
                             }
                         }
