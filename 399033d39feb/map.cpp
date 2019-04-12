@@ -269,7 +269,7 @@ void add_cave_lava(int x, int y)
 
     w1->walkable = false;
 
-    w1->data = 1; //hurts player when they walk on it
+    w1->data = NULL; //hurts player when they walk on it
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
