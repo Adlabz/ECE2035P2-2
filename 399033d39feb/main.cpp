@@ -192,11 +192,11 @@ void init_cave() {
     };
     for (int z = 0; z < 20; z++) {
         for (int a = 0; a < 20; a++) {
-            if (wallxy[z][a] == 'W') {
+            if (thisMap[z][a] == 'W') {
                 add_cave_wall(a, z);
-            } else if (wallxy[z][a] == 'L') {
+            } else if (thisMap[z][a] == 'L') {
                 add_cave_wall(a, z);
-            } else if (wallxy[z][a] == 'F') {
+            } else if (thisMap[z][a] == 'F') {
                 add_cave_floor(a, z);
             }
         }
