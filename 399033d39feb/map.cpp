@@ -71,6 +71,9 @@ Map* get_active_map()
     }
 }
 
+int get_active_map_no() {
+    return active_map;
+}
 Map* set_active_map(int m)
 {
     active_map = m;

@@ -1,6 +1,7 @@
 #include "graphics.h"
 
 #include "globals.h"
+#include "map.h"
 
 #define YELLOW 0xEEDD33
 #define BROWN  0xD2691E
@@ -89,7 +90,7 @@ void draw_img(int u, int v, const char* img)
 
 void draw_nothing(int u, int v)
 {
-    if (active_map == 0){
+    if (get_active_map_no() == 0){
         // Fill a tile with grass
         int dirtBlock[11 * 11] =
         {
@@ -362,9 +363,6 @@ void draw_cave_floor(int u, int v) {
         0x364a58, 0x24333c, 0x24333c, 0x364a58, 0x364a58, 0x364a58, 0x364a58, 0x364a58, 0x24333c, 0x24333c, 0x364a58
     };
     uLCD.BLIT(u, v, 11, 11, caveFloorBlock);
-}
-void draw_cave_nothing(int u, int v) {
-    uLCD.filled_rectangle(u, v, u+10, v+10, BLACK);
 }
 void draw_upper_status(int xx, int yy, int hh)
 {

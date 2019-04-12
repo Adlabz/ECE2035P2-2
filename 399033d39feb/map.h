@@ -62,6 +62,10 @@ void caves_init();
  * Returns a pointer to the active map.
  */
 Map* get_active_map();
+/**
+ * returns index of current map
+ */
+int get_active_map_no();
 
 /**
  * Sets the active map to map m, where m is the index of the map to activate.
