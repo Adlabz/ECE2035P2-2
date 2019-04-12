@@ -64,6 +64,7 @@ typedef struct {
  * and sets the width and height.
  */
 void maps_init();
+void caves_init();
 
 /**
  * Returns a pointer to the active map.

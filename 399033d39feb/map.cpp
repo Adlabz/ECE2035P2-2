@@ -49,6 +49,14 @@ void maps_init()
     map.items = table;
 }
 
+void caves_init()
+{
+    map.w = 20;
+    map.h = 20;
+    HashTable* table = createHashTable(map_hash, 256);
+    map.items = table;
+}
+
 Map* get_active_map()
 {
     // There's only one map
