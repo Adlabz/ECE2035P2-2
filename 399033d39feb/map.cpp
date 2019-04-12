@@ -64,7 +64,7 @@ Map* set_active_map(int m)
 void print_map()
 {
     // As you add more types, you'll need to add more items to this array.
-    char lookup[] = {'W', 'P'};
+    char lookup[] = {'W', 'P', 'C', 'O'};
     for(int y = 0; y < map_height(); y++)
     {
         for (int x = 0; x < map_width(); x++)
@@ -148,6 +148,44 @@ void add_plant(int x, int y)
     w1->draw = draw_plant;
 
     w1->walkable = true;
+
+    w1->data = NULL;
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+
+}
+
+void add_cave_entry(int x, int y)
+{
+
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = CAVE_ENTRY;
+
+    w1->draw = draw_cave_entry;
+
+    w1->walkable = false;
+
+    w1->data = NULL;
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+
+}
+
+void set_cave_opening(int x, int y)
+{
+
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = CAVE_ENTRY_OPENING;
+
+    w1->draw = draw_cave_opening;
+
+    w1->walkable = false;
 
     w1->data = NULL;
 

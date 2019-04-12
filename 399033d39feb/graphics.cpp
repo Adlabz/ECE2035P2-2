@@ -106,6 +106,134 @@ void draw_nothing(int u, int v)
     };
     uLCD.BLIT(u, v, 11, 11, dirtBlock);
 }
+#define R 0x8c8d8b
+#define U 0x5c5c5c
+void draw_cave_entry(int u, int v)
+{
+    // Fill a tile with grass
+    int Rock[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, R, R, U, U, G, G, Y, G,
+        G, U, R, R, R, R, R, U, G, Y, G,
+        U, R, R, R, R, R, R, R, U, G, G,
+        U, R, U, R, R, R, U, R, R, U, G,
+        U, R, R, R, R, U, R, R, R, U, G,
+        G, U, R, R, R, R, R, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    uLCD.BLIT(u, v, 11, 11, Rock);
+}
+#define V BLACK
+void draw_cave_opening(int u, int v)
+{
+    // Fill a tile with grass
+    int f1[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, R, R, U, U, G, G, Y, G,
+        G, U, R, R, R, R, R, U, G, Y, G,
+        U, R, R, R, R, R, R, R, U, G, G,
+        U, R, U, R, R, R, U, R, R, U, G,
+        U, R, R, R, R, U, R, R, R, U, G,
+        G, U, R, R, R, R, R, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    int f2[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, U, R, U, U, G, G, Y, G,
+        G, U, R, R, U, R, R, U, G, Y, G,
+        U, R, R, R, U, R, R, R, U, G, G,
+        U, R, U, R, R, R, U, R, R, U, G,
+        U, R, R, R, R, U, R, R, R, U, G,
+        G, U, R, R, R, R, R, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    int f3[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, U, R, U, U, G, G, Y, G,
+        G, U, R, R, U, R, R, U, G, Y, G,
+        U, R, R, R, U, R, R, R, U, G, G,
+        U, R, U, U, R, R, U, R, R, U, G,
+        U, R, R, R, U, U, R, R, R, U, G,
+        G, U, R, U, R, R, U, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    int f4[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, U, R, U, U, G, G, Y, G,
+        G, U, R, R, U, R, R, U, G, Y, G,
+        U, R, R, R, V, V, R, R, U, G, G,
+        U, R, U, U, V, V, U, R, R, U, G,
+        U, R, R, R, U, U, R, R, R, U, G,
+        G, U, R, U, R, R, U, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    int f5[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, U, R, U, U, G, G, Y, G,
+        G, U, R, R, U, R, R, U, G, Y, G,
+        U, R, R, V, V, V, R, R, U, G, G,
+        U, R, V, V, V, V, U, R, R, U, G,
+        U, R, R, V, V, V, R, R, R, U, G,
+        G, U, R, U, V, R, U, R, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    int f6[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, V, V, U, U, G, G, Y, G,
+        G, U, V, V, V, V, V, U, G, Y, G,
+        U, V, V, V, V, V, V, V, U, G, G,
+        U, V, V, V, V, V, V, V, V, U, G,
+        U, V, V, V, V, V, V, V, V, U, G,
+        G, U, V, V, V, V, V, V, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    uLCD.BLIT(u, v, 11, 11, f1);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f1);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f2);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f2);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f3);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f3);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f4);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f5);
+    wait_ms(50);
+    uLCD.BLIT(u, v, 11, 11, f6);
+}
+
 
 void draw_wall(int u, int v)
 {

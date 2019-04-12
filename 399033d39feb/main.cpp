@@ -42,9 +42,20 @@ struct {
 #define GO_UP 5
 #define GO_DOWN 6
 #define OMNI 7
+#define OPEN_CAVE 8
+#define ENTER_CAVE 9
 int get_action(GameInputs inputs)
 {
+    MapItem* north = get_north(Player.x, Player.y);
+    MapItem* south = get_south(Player.x, Player.y);
+    MapItem* east = get_east(Player.x, Player.y);
+    MapItem* west = get_west(Player.x, Player.y);
     if (inputs.b1 == 0) {
+        if (north->type = CAVE_ENTRY || south->type = CAVE_ENTRY || east->type = CAVE_ENTRY || west->type = CAVE_ENTRY) {
+            return 8;
+        } else if (north->type = CAVE_ENTRY_OPENING || south->type = CAVE_ENTRY_OPENING || east->type = CAVE_ENTRY_OPENING || west->type = CAVE_ENTRY_OPENING) {
+            return 9;
+        }
         return ACTION_BUTTON;
     }
     if (inputs.b2 == 0) {
@@ -66,10 +77,6 @@ int get_action(GameInputs inputs)
         absZ = absZ * (-1);
     }
     double threshold = 2;
-    MapItem* north = get_north(Player.x, Player.y);
-    MapItem* south = get_south(Player.x, Player.y);
-    MapItem* east = get_east(Player.x, Player.y);
-    MapItem* west = get_west(Player.x, Player.y);
     if (absX * threshold > absZ || absY * threshold > absZ) {
         if (absX * 0.9 > absY) {
             if (inputs.ax < 0) {
@@ -168,7 +175,6 @@ void moveNPC() {
 #define NO_RESULT 0
 #define GAME_OVER 1
 #define FULL_DRAW 2
-#define NPC1 3
 int update_game(int action)
 {
     // Save player previous location before updating
@@ -182,6 +188,12 @@ int update_game(int action)
     // You can define functions like "go_up()" that get called for each case.
     switch(action)
     {
+        case OPEN_CAVE:
+            if (Player.quest){
+                set_cave_opening(5, 50);
+            }
+        case ENTER_CAVE:
+            break;
         case GO_UP:
             Player.y = Player.y + 1;
             if ((Player.x + Player.y)%2) {
@@ -342,6 +354,7 @@ void init_main_map()
     }
 
     pc.printf("plants\r\n");
+    add_cave_entry(5, 50);
 
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());

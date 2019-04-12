@@ -24,21 +24,21 @@ typedef struct {
      * game state.
      */
     int type;
-    
+
     /**
      * A function pointer to the drawing function for this item. Used by draw_game.
      */
     DrawFunc draw;
-    
+
     /**
      * If zero, this item should block character motion.
      */
     int walkable;
-    
+
     /**
      * Arbitrary extra data for the MapItem. Could be useful for keeping up with
      * special information, like where a set of stairs should take the player.
-     * 
+     *
      * Iterpretation of this can depend on the type of the MapItem. For example,
      * a WALL probably doesn't need to use this (it can be NULL), where an NPC
      * might use it to store game state (have I given the player the key yet?).
@@ -55,10 +55,12 @@ typedef struct {
 // Define more of these!
 #define WALL    0
 #define PLANT   1
+#define CAVE_ENTRY 2
+#define CAVE_ENTRY_OPENING 3
 
 /**
  * Initializes the internal structures for all maps. This does not populate
- * the map with items, but allocates space for them, initializes the hash tables, 
+ * the map with items, but allocates space for them, initializes the hash tables,
  * and sets the width and height.
  */
 void maps_init();
