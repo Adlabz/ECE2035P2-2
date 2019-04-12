@@ -340,6 +340,15 @@ void draw_game(int init)
                 if (init || curr_item != prev_item) // Only draw if they're different or init
                 {
                         draw = (curr_item)?curr_item->draw:draw_nothing;
+                        if (!curr_item && get_active_map_no() == 1) {
+                            Player.HP--;
+                            if (Player.HP == 0) {
+                                const char* line3 = "You lost!";
+                                const char* line4 = "Try again...";
+                                speech(line3, line4);
+                                exit(1);
+                            }
+                        }
                         draw(u, v);
                         draw_player(u, v, Player.has_key);
                 }
