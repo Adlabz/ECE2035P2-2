@@ -18,6 +18,7 @@ struct Map {
  * is static.
  */
 static Map map;
+static Map cave;
 static int active_map;
 
 /**
@@ -51,22 +52,36 @@ void maps_init()
 
 void caves_init()
 {
-    map.w = 20;
-    map.h = 20;
+    cave.w = 20;
+    cave.h = 20;
     HashTable* table = createHashTable(map_hash, 256);
-    map.items = table;
+    cave.items = table;
 }
 
 Map* get_active_map()
 {
     // There's only one map
-    return &map;
+    switch(active_map) {
+        case 0:
+            return &map;
+        case 1:
+            return &cave;
+        default:
+            return &map;
+    }
 }
 
 Map* set_active_map(int m)
 {
     active_map = m;
-    return &map;
+    switch(m) {
+        case 0:
+            return &map;
+        case 1:
+            return &cave;
+        default:
+            return &map;
+    }
 }
 
 void print_map()
@@ -87,48 +102,48 @@ void print_map()
 
 int map_width()
 {
-    return map.w;
+    return get_active_map()->w;
 }
 
 int map_height()
 {
-    return map.h;
+    return get_active_map()->h;
 }
 
 int map_area()
 {
-    return map.w * map.h;
+    return get_active_map()->w * get_active_map()->h;
 }
 
 MapItem* get_north(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x, y+1));
+    return (MapItem*) getItem(get_active_map()->items, XY_KEY(x, y+1));
 }
 
 MapItem* get_south(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x, y-1));
+    return (MapItem*) getItem(get_active_map()->items, XY_KEY(x, y-1));
 }
 
 MapItem* get_east(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x+1, y));
+    return (MapItem*) getItem(get_active_map()->items, XY_KEY(x+1, y));
 }
 
 MapItem* get_west(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x-1, y));
+    return (MapItem*) getItem(get_active_map()->items, XY_KEY(x-1, y));
 }
 
 MapItem* get_here(int x, int y)
 {
-    return (MapItem*) getItem(map.items, XY_KEY(x, y));
+    return (MapItem*) getItem(get_active_map()->items, XY_KEY(x, y));
 }
 
 
 void map_erase(int x, int y)
 {
-    removeItem(map.items, XY_KEY(x, y));
+    removeItem(get_active_map()->items, XY_KEY(x, y));
 }
 
 void add_wall(int x, int y, int dir, int len)
@@ -184,6 +199,8 @@ void add_cave_entry(int x, int y)
 
 }
 
+
+
 void set_cave_opening(int x, int y)
 {
 
@@ -196,6 +213,63 @@ void set_cave_opening(int x, int y)
     w1->walkable = false;
 
     w1->data = NULL;
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+
+}
+
+void add_cave_wall(int x, int y)
+{
+
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = CAVE_WALL;
+
+    w1->draw = draw_cave_wall;
+
+    w1->walkable = false;
+
+    w1->data = NULL;
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+
+}
+
+void add_cave_floor(int x, int y)
+{
+
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = CAVE_ENTRY;
+
+    w1->draw = draw_cave_floor;
+
+    w1->walkable = true;
+
+    w1->data = NULL;
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+
+}
+
+void add_cave_lava(int x, int y)
+{
+
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = CAVE_LAVA;
+
+    w1->draw = draw_cave_lava;
+
+    w1->walkable = false;
+
+    w1->data = 1; //hurts player when they walk on it
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 

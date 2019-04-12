@@ -57,6 +57,9 @@ typedef struct {
 #define PLANT   1
 #define CAVE_ENTRY 2
 #define CAVE_ENTRY_OPENING 3
+#define CAVE_WALL 4
+#define CAVE_FLOOR 5
+#define CAVE_LAVA 6
 
 /**
  * Initializes the internal structures for all maps. This does not populate
@@ -163,5 +166,9 @@ void add_cave_entry(int x, int y);
  * before adding the opened cave.
  */
 void set_cave_opening(int x, int y);
+//Functions for cave elements which look and behave differently than their counterparts in the main map
+void add_cave_wall(int x, int y);
+void add_cave_floor(int x, int y);
+void add_cave_lava(int x, int y);
 
 #endif //MAP_H

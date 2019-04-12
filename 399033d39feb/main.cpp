@@ -22,6 +22,7 @@ struct {
     int has_key;
     int omnipotent, pomnipotent;
     int quest; //if player has quest
+    int HP;
 } Player;
 
 struct {
@@ -335,7 +336,7 @@ void draw_game(int init)
     }
 
     // Draw status bars
-    draw_upper_status(Player.x, Player.y);
+    draw_upper_status(Player.x, Player.y, Player.HP);
     if (Player.omnipotent && !Player.pomnipotent) {
         draw_lower_status();
     } else if (Player.pomnipotent && !Player.omnipotent) {
@@ -469,6 +470,7 @@ int main()
     set_active_map(0);
 
     Player.x = Player.y = 43;
+    Player.HP = 99;
     MovingNPC.x = 43;
     MovingNPC.y = 37;
 
