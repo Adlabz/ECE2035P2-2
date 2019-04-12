@@ -319,7 +319,7 @@ void draw_game(int init)
                     {
                         draw = draw_nothing;
                     }
-                    if (curr_item->type = CAVE_ENTRY_OPENING) {
+                    if (curr_item->type == CAVE_ENTRY_OPENING) {
                         curr_item->draw = draw_cave_opened;
                     }
                 }
