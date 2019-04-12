@@ -298,6 +298,18 @@ int update_game(int action)
             break;
         default:        break;
     }
+    MapItem* curr_item = get_here(x, y);
+    if (!curr_item && get_active_map_no == 1) {
+        Player.HP--;
+        wait_ms(80);
+        if (Player.HP == 0) {
+            const char* line3 = "You lost!";
+            const char* line4 = "Try again...";
+            speech(line3, line4);
+            wait_ms(100000);
+            exit(1);
+        }
+    }
     return NO_RESULT;
 }
 
