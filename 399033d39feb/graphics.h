@@ -32,6 +32,7 @@ void draw_plant(int u, int v);
 void draw_NPC(int u, int v);
 void draw_cave_entry(int u, int v);
 void draw_cave_opening(int u, int v);
+void draw_cave_opened(int u, int v);
 
 /**
  * Draw the upper status bar.

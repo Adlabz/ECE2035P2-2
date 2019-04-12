@@ -216,24 +216,42 @@ void draw_cave_opening(int u, int v)
         G, G, U, U, U, U, U, U, G, G, G
     };
     uLCD.BLIT(u, v, 11, 11, f1);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f1);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f2);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f2);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f3);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f3);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f4);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f5);
-    wait_ms(50);
+    wait_ms(200);
     uLCD.BLIT(u, v, 11, 11, f6);
 }
 
+void draw_cave_opened(int u, int v)
+{
+    int f6[11 * 11] =
+    {
+        G, G, G, G, G, G, G, G, G, G, G,
+        G, Y, G, G, G, G, G, G, G, G, G,
+        G, G, Y, G, G, G, G, Y, G, G, G,
+        G, G, G, U, U, G, G, G, G, G, G,
+        G, G, U, V, V, U, U, G, G, Y, G,
+        G, U, V, V, V, V, V, U, G, Y, G,
+        U, V, V, V, V, V, V, V, U, G, G,
+        U, V, V, V, V, V, V, V, V, U, G,
+        U, V, V, V, V, V, V, V, V, U, G,
+        G, U, V, V, V, V, V, V, U, G, G,
+        G, G, U, U, U, U, U, U, G, G, G
+    };
+    uLCD.BLIT(u, v, 11, 11, f6);
+}
 
 void draw_wall(int u, int v)
 {

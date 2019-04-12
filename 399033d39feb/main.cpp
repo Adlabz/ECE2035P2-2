@@ -191,7 +191,11 @@ int update_game(int action)
         case OPEN_CAVE:
             if (Player.quest){
                 set_cave_opening(5, 50);
+                draw_game(2);
+
             }
+            return FULL_DRAW;
+            break;
         case ENTER_CAVE:
             break;
         case GO_UP:
@@ -227,17 +231,17 @@ int update_game(int action)
                         };
                         long_speech(lines, 13);
                         Player.quest = 1;
-                        draw_game(1);
+                        draw_game(2);
                     } if (Player.quest && !Player.has_key) {
                         const char* line1 = "Go get them!";
                         const char* line2 = "We need you to";
                         speech(line1, line2);
-                        draw_game(1);
+                        draw_game(2);
                     } else {
                         const char* line3 = "You did it!";
                         const char* line4 = "K thanks";
                         speech(line3, line4);
-                        draw_game(1);
+                        draw_game(2);
                     }
                 }
             }
@@ -324,6 +328,9 @@ void draw_game(int init)
 
             // Actually draw the tile
             if (draw) draw(u, v);
+            if (curr_item->type = CAVE_ENTRY_OPENING) {
+                curr_item->draw = draw_cave_opened;
+            }
         }
     }
 
