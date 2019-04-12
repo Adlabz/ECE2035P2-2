@@ -377,7 +377,7 @@ void draw_upper_status(int xx, int yy, int hh)
     char h = hh % 10 + '0';
     char h2 = (hh/10) % 10 + '0';
     char s[] = {'x', ':', ' ', x2, x, ' ', 'y', ':', ' ', y2, y, ' ', 'H', 'P',':',' ',h2,h,'\0' };
-    uLCD.text_string(s, 1, 0, FONT_7X8, GREEN);
+    uLCD.text_string(s, 0, 0, FONT_7X8, GREEN);
 }
 
 void draw_lower_status()
