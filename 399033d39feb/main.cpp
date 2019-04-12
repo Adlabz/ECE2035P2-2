@@ -503,6 +503,7 @@ int main()
 
     // Initialize the maps
     maps_init();
+    caves_init();
 
     init_main_map();
 
