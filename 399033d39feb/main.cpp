@@ -51,9 +51,9 @@ int get_action(GameInputs inputs)
     MapItem* east = get_east(Player.x, Player.y);
     MapItem* west = get_west(Player.x, Player.y);
     if (inputs.b1 == 0) {
-        if (north->type = CAVE_ENTRY || south->type = CAVE_ENTRY || east->type = CAVE_ENTRY || west->type = CAVE_ENTRY) {
+        if (north->type == CAVE_ENTRY || south->type == CAVE_ENTRY || east->type == CAVE_ENTRY || west->type == CAVE_ENTRY) {
             return 8;
-        } else if (north->type = CAVE_ENTRY_OPENING || south->type = CAVE_ENTRY_OPENING || east->type = CAVE_ENTRY_OPENING || west->type = CAVE_ENTRY_OPENING) {
+        } else if (north->type == CAVE_ENTRY_OPENING || south->type == CAVE_ENTRY_OPENING || east->type == CAVE_ENTRY_OPENING || west->type == CAVE_ENTRY_OPENING) {
             return 9;
         }
         return ACTION_BUTTON;
