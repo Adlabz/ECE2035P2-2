@@ -319,6 +319,9 @@ void draw_game(int init)
                     {
                         draw = draw_nothing;
                     }
+                    if (curr_item->type = CAVE_ENTRY_OPENING) {
+                        curr_item->draw = draw_cave_opened;
+                    }
                 }
             }
             else if (init) // If doing a full draw, but we're out of bounds, draw the walls.
@@ -328,9 +331,6 @@ void draw_game(int init)
 
             // Actually draw the tile
             if (draw) draw(u, v);
-            if (curr_item->type = CAVE_ENTRY_OPENING) {
-                curr_item->draw = draw_cave_opened;
-            }
         }
     }
 
