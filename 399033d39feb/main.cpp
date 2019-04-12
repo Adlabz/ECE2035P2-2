@@ -299,7 +299,7 @@ int update_game(int action)
         default:        break;
     }
     MapItem* curr_item = get_here(Player.x, Player.y);
-    if (!curr_item && get_active_map_no == 1) {
+    if (!curr_item && get_active_map_no() == 1) {
         Player.HP--;
         wait_ms(80);
         if (Player.HP == 0) {
