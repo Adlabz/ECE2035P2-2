@@ -368,7 +368,7 @@ void draw_game(int init)
             }
             else if (init) // If doing a full draw, but we're out of bounds, draw the walls.
             {
-                draw = draw_wall;
+                draw = draw_nothing;
             }
 
             // Actually draw the tile
