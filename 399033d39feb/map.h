@@ -34,16 +34,6 @@ typedef struct {
      * If zero, this item should block character motion.
      */
     int walkable;
-
-    /**
-     * Arbitrary extra data for the MapItem. Could be useful for keeping up with
-     * special information, like where a set of stairs should take the player.
-     *
-     * Iterpretation of this can depend on the type of the MapItem. For example,
-     * a WALL probably doesn't need to use this (it can be NULL), where an NPC
-     * might use it to store game state (have I given the player the key yet?).
-     */
-    void* data;
 } MapItem;
 
 typedef struct {

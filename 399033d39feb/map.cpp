@@ -154,7 +154,6 @@ void add_wall(int x, int y, int dir, int len)
         w1->type = WALL;
         w1->draw = draw_wall;
         w1->walkable = false;
-        w1->data = NULL;
         unsigned key = (dir == HORIZONTAL) ? XY_KEY(x+i, y) : XY_KEY(x, y+i);
         void* val = insertItem(get_active_map()->items, key, w1);
         if (val) free(val); // If something is already there, free it
@@ -172,7 +171,6 @@ void add_plant(int x, int y)
 
     w1->walkable = true;
 
-    w1->data = NULL;
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
@@ -191,7 +189,6 @@ void add_cave_entry(int x, int y)
 
     w1->walkable = false;
 
-    w1->data = NULL;
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
@@ -212,7 +209,6 @@ void set_cave_opening(int x, int y)
 
     w1->walkable = false;
 
-    w1->data = NULL;
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
@@ -231,7 +227,6 @@ void add_cave_wall(int x, int y)
 
     w1->walkable = false;
 
-    w1->data = NULL;
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
@@ -250,7 +245,6 @@ void add_cave_floor(int x, int y)
 
     w1->walkable = true;
 
-    w1->data = NULL;
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
@@ -269,7 +263,6 @@ void add_cave_lava(int x, int y)
 
     w1->walkable = false;
 
-    w1->data = NULL; //hurts player when they walk on it
 
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
 
