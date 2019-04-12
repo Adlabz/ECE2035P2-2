@@ -152,5 +152,15 @@ void add_wall(int x, int y, int dir, int len);
  * before adding the plant.
  */
 void add_plant(int x, int y);
+/**
+ * Add a CAVE_ENTRY item at (x,y). If there is already a MapItem at (x,y), erase it
+ * before adding the entry.
+ */
+void add_cave_entry(int x, int y);
+/**
+ * Animate the opening of a CAVE_ENTRY item at (x,y). If there is already a MapItem at (x,y), erase it
+ * before adding the opened cave.
+ */
+void set_cave_opening(int x, int y);
 
 #endif //MAP_H
