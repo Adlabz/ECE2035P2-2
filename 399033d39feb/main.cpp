@@ -348,10 +348,10 @@ int update_game(int action)
                     }
                     if(n == 7) { //Green NPC
                         if(!Player.quest) {
-                            const char* lines[21] = {
-                                "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "Southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase health."
+                            const char* lines[22] = {
+                                "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "Southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase", "your health."
                             };
-                            long_speech(lines, 21);
+                            long_speech(lines, 22);
                             Player.HP = 99;
                             draw_game(2);
                         }
@@ -699,9 +699,9 @@ int main()
     // Initialize game state
     set_active_map(0);
 
-    //Player.x = 5;
-    //Player.y = 4;
-    Player.x = Player.y = 43;
+    Player.x = 5;
+    Player.y = 4;
+    //Player.x = Player.y = 43;
     Player.HP = 1;
     MovingNPC.x = 43;
     MovingNPC.y = 37;
