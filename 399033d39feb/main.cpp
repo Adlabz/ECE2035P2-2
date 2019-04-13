@@ -340,6 +340,10 @@ int update_game(int action)
                             long_speech(lines, 13);
                             Player.quest = 2;
                             set_active_map(0);
+                            add_unmoving_NPC(49, 47, 3);
+                            add_unmoving_NPC(49, 42, 4);
+                            add_unmoving_NPC(42, 42, 5);
+                            add_unmoving_NPC(42, 42, 6);
                             Player.x = Player.y = 43;
                             draw_game(2);
                         } else if (Player.has_key) {
