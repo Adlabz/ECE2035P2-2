@@ -380,9 +380,9 @@ void draw_game(int init)
                 }
                 continue;
             } else if (x == MovingNPC.x && y == MovingNPC.y) {
-                MapItem* curr_item = get_here(x, y);
+                /*MapItem* curr_item = get_here(x, y);
                 draw = curr_item->draw;
-                draw(u,v);
+                draw(u,v);*/
                 draw_NPC(u, v);
                 continue;
             }
