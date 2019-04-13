@@ -307,19 +307,15 @@ int update_game(int action)
                 MapItem* west = get_west(Player.x, Player.y);
                 if (north && north->type > 5) {
                     n = north->type;
-                    which = 0;
                 }
                 if (south && south->type > 5) {
                     n = south->type;
-                    which = 1;
                 }
                 if (east && east->type > 5) {
                     n = east->type;
-                    which = 2;
                 }
                 if (west && west->type > 5) {
                     n = west->type;
-                    which = 3;
                 }
                 if (n) {
                     if(n == 6) { //Wizard
