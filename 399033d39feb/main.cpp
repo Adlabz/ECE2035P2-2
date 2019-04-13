@@ -435,10 +435,12 @@ void draw_game(int init)
                 }
                 continue;
             } else if (x == MovingNPC.x && y == MovingNPC.y) {
-                MapItem* curr_item = get_here(x, y);
-                draw = (curr_item)?curr_item->draw:draw_nothing;
-                draw(u,v);
-                draw_NPC(u, v);
+                if(Player.px != Player.x || Player.py != Player.y){
+                    MapItem* curr_item = get_here(x, y);
+                    draw = (curr_item)?curr_item->draw:draw_nothing;
+                    draw(u,v);
+                    draw_NPC(u, v);
+                }
                 continue;
             }
             else if (x >= 0 && y >= 0 && x < map_width() && y < map_height()) // Current (i,j) in the map
