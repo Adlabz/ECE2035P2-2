@@ -271,6 +271,7 @@ int update_game(int action)
             }
             return FULL_DRAW;
         case ACTION_BUTTON:
+            printf("here");
             if (Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x) {
                 if (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y) {
                     if (!Player.quest) {
@@ -320,7 +321,7 @@ int update_game(int action)
             pc.printf("%d", n);
             if (n) {
                 if(n == 6) { //Wizard
-                    pc.printf("here");
+                    pc.printf("Here");
                     if(!Player.quest) {
                         const char* line1 = "How did you get";
                         const char* line2 = "here?";
