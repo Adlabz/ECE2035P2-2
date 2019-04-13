@@ -318,43 +318,39 @@ int update_game(int action)
                 n = west->type;
             }
             if (n) {
-                switch(n){
-                    case 6: //Wizard
-                        if(!Player.quest) {
-                            const char* line1 = "How did you get";
-                            const char* line2 = "here?";
-                            speech(line1, line2);
-                            draw_game(2);
-                        } else if (Player.quest == 1) {
-                            const char* lines[13] = {
-                                "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
-                            };
-                            long_speech(lines, 13);
-                            Player.quest = 2;
-                            set_active_map(0);
-                            Player.x = Player.y = 43;
-                            draw_game(2);
-                        } else if (Player.quest == 2) {
-                            const char* line1 = "Why did you";
-                            const char* line2 = "come back here?";
-                            speech(line1, line2);
-                            set_active_map(0);
-                            Player.x = Player.y = 43;
-                            draw_game(2);
-                        }
-                        break;
-                    case 7: //Green NPC
-                        break;
-                    case 8: //Orange NPC
-                        break;
-                    case 9: //Yellow NPC
-                        break;
-                    case 10: //White NPC
-                        break;
-                    case 11: //Brown NPC
-                        break;
-                    default:
-                        break;
+                if(n == 6) { //Wizard
+                    if(!Player.quest) {
+                        const char* line1 = "How did you get";
+                        const char* line2 = "here?";
+                        speech(line1, line2);
+                        draw_game(2);
+                    } else if (Player.quest == 1) {
+                        const char* lines[13] = {
+                            "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
+                        };
+                        long_speech(lines, 13);
+                        Player.quest = 2;
+                        set_active_map(0);
+                        Player.x = Player.y = 43;
+                        draw_game(2);
+                    } else if (Player.quest == 2) {
+                        const char* line1 = "Why did you";
+                        const char* line2 = "come back here?";
+                        speech(line1, line2);
+                        set_active_map(0);
+                        Player.x = Player.y = 43;
+                        draw_game(2);
+                    }
+                }
+                if(n == 7) { //Green NPC
+                }
+                if(n == 8) { //Orange NPC
+                }
+                if(n == 9) { //Yellow NPC
+                }
+                if(n == 1) {  //White NPC
+                }
+                if(n == 1) {  //Brown NPC
                 }
             }
             break;
