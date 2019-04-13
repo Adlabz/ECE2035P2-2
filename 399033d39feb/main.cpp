@@ -52,17 +52,12 @@ int get_action(GameInputs inputs)
     MapItem* east = get_east(Player.x, Player.y);
     MapItem* west = get_west(Player.x, Player.y);
     if (inputs.b1 == 0) {
-        pc.printf("b1 != 0\n");
         if ((north && north->type == CAVE_ENTRY) || (south && south->type == CAVE_ENTRY) || (east && east->type == CAVE_ENTRY) || (west && west->type == CAVE_ENTRY)) {
-            pc.printf("OPEN_CAVE\n");
             return OPEN_CAVE;
         }
-        pc.printf("first if\n");
         if ((north && north->type == CAVE_ENTRY_OPENING) || (south && south->type == CAVE_ENTRY_OPENING) || (east && east->type == CAVE_ENTRY_OPENING) || (west && west->type == CAVE_ENTRY_OPENING)) {
-            pc.printf("ENTER_CAVE\n");
             return ENTER_CAVE;
         }
-        pc.printf("second if\n");
         return ACTION_BUTTON;
     }
     if (inputs.b2 == 0) {
@@ -277,7 +272,6 @@ int update_game(int action)
             }
             return FULL_DRAW;
         case ACTION_BUTTON:
-            printf("here");
             if ((Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x)
                     && (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y)) {
                 if (!Player.quest) {
@@ -306,7 +300,6 @@ int update_game(int action)
                     draw_game(2);
                 }
             } else {
-                pc.printf("in Else");
                 int n = 0;
                 MapItem* north = get_north(Player.x, Player.y);
                 MapItem* south = get_south(Player.x, Player.y);
@@ -324,10 +317,8 @@ int update_game(int action)
                 if (west && west->type > 5) {
                     n = west->type;
                 }
-                pc.printf("%d", n);
                 if (n) {
                     if(n == 6) { //Wizard
-                        pc.printf("Here");
                         if(!Player.quest) {
                             const char* line1 = "How did you get";
                             const char* line2 = "here?";
@@ -343,7 +334,7 @@ int update_game(int action)
                             add_unmoving_NPC(49, 47, 3);
                             add_unmoving_NPC(49, 42, 4);
                             add_unmoving_NPC(42, 42, 5);
-                            add_unmoving_NPC(42, 42, 6);
+                            add_unmoving_NPC(42, 47, 6);
                             Player.x = Player.y = 43;
                             draw_game(2);
                         } else if (Player.has_key) {
@@ -356,14 +347,104 @@ int update_game(int action)
                         }
                     }
                     if(n == 7) { //Green NPC
+                        if(!Player.quest) {
+                            const char* lines[21] = {
+                                "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "Southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase health."
+                            };
+                            long_speech(lines, 21);
+                            Player.HP = 99;
+                            draw_game(2);
+                        }
+                        if (Player.quest == 1) {
+                            const char* lines[5] = {
+                                "Descend into", "the cave.", "Make sure", "your health is", "up."
+                            };
+                            long_speech(lines, 5);
+                            Player.HP = 99;
+                            draw_game(2);
+                        }
+                        if (Player.quest == 2 && !Player.has_key) {
+                            const char* lines[5] = {
+                                "You've saved", "a desparate", "village from", "a dire", "situation."
+                            };
+                            long_speech(lines, 5);
+                            draw_game(2);
+                        }
+                        if (Player.has_key) {
+                            const char* lines[5] = {
+                                "You saved", "many lives.", "Go reap the", "rewards of", "your actions."
+                            };
+                            long_speech(lines, 5);
+                            draw_game(2);
+                        }
                     }
                     if(n == 8) { //Orange NPC
+                        if (Player.quest == 2 && !Player.has_key) {
+                            const char* lines[5] = {
+                                "You saved", "us all. It", "isn't much, but", "let me increase", "your health."
+                            };
+                            long_speech(lines, 5);
+                            Player.HP += 25;
+                            draw_game(2);
+                        }
+                        if (Player.has_key) {
+                            const char* lines[5] = {
+                                "You deserve", "whatever treasure", "we've stored in", "there. Thank", "you."
+                            };
+                            long_speech(lines, 5);
+                            draw_game(2);
+                        }
                     }
                     if(n == 9) { //Yellow NPC
+                        if (Player.quest == 2 && !Player.has_key) {
+                            const char* lines[5] = {
+                                "A hero", "like you needs", "to be strong", "for the next", "adventure."
+                            };
+                            long_speech(lines, 5);
+                            Player.HP += 17;
+                            draw_game(2);
+                        }
+                        if (Player.has_key) {
+                            const char* lines[5] = {
+                                "There is yet", "an award that", "awaits you", "in that", "room."
+                            };
+                            long_speech(lines, 5);
+                            draw_game(2);
+                        }
                     }
-                    if(n == 1) {  //White NPC
+                    if(n == 10) {  //White NPC
+                        if (Player.quest == 2 && !Player.has_key) {
+                            const char* lines[4] = {
+                                "My father", "must have been", "worried sick", "about us."
+                            };
+                            long_speech(lines, 4);
+                            Player.HP += 23;
+                            draw_game(2);
+                        }
+                        if (Player.has_key) {
+                            const char* lines[4] = {
+                                "Oooh!", "Shiny key.", "What does that", "open?"
+                            };
+                            long_speech(lines, 4);
+                            draw_game(2);
+                        }
                     }
-                    if(n == 1) {  //Brown NPC
+                    if(n == 11) {  //Brown NPC
+                        if (Player.quest == 2 && !Player.has_key) {
+                            const char* lines[4] = {
+                                "I couldn't have", "done the same.", "Your valiance", "is special."
+                            };
+                            long_speech(lines, 4);
+                            Player.HP += 20;
+                            draw_game(2);
+                        }
+                        if (Player.has_key) {
+                            const char* lines[4] = {
+                                "I see we", "have decided to", "give you our", "treasure..."
+                            };
+                            long_speech(lines, 4);
+                            draw_game(2);
+                        }
                     }
                 }
             }
@@ -510,6 +591,7 @@ void init_main_map()
 
     pc.printf("plants\r\n");
     add_cave_entry(5, 50);
+    add_unmoving_NPC(7, 7, 2);
 
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());
@@ -617,8 +699,10 @@ int main()
     // Initialize game state
     set_active_map(0);
 
+    //Player.x = 5;
+    //Player.y = 4;
     Player.x = Player.y = 43;
-    Player.HP = 99;
+    Player.HP = 1;
     MovingNPC.x = 43;
     MovingNPC.y = 37;
 
@@ -642,7 +726,7 @@ int main()
         int init = update_game(action);
         // 3b. Check for game over
         if (init == 1){
-
+            break;
         }
         // 4. Draw frame (draw_game)
         draw_game(init);
