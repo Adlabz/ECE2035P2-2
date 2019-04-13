@@ -242,7 +242,7 @@ void add_cave_floor(int x, int y)
 
     MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
 
-    w1->type = CAVE_ENTRY;
+    w1->type = CAVE_FLOOR;
 
     w1->draw = draw_cave_floor;
 
