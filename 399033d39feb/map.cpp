@@ -254,3 +254,34 @@ void add_cave_floor(int x, int y)
     if (val) free(val); // If something is already there, free it
 
 }
+void add_unmoving_NPC(int x, int y, int n) {
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+    w1->type = 5 + n;
+    switch(n) {
+        case 1:
+            w1->draw = draw_Wizard;
+            break;
+        case 2:
+            w1->draw = draw_NPC_green;
+            break;
+        case 3:
+            w1->draw = draw_NPC_orange;
+            break;
+        case 4:
+            w1->draw = draw_NPC_yellow;
+            break;
+        case 5:
+            w1->draw = draw_NPC_white;
+            break;
+        case 6:
+            w1->draw = draw_NPC_brown;
+            break;
+    }
+
+    w1->walkable = false;
+
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+}

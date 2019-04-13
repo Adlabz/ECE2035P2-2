@@ -35,6 +35,12 @@ void draw_cave_opening(int u, int v);
 void draw_cave_opened(int u, int v);
 void draw_cave_wall(int u, int v);
 void draw_cave_floor(int u, int v);
+void draw_Wizard(int u, int v);
+void draw_NPC_green(int u, int v);
+void draw_NPC_orange(int u, int v);
+void draw_NPC_yellow(int u, int v);
+void draw_NPC_white(int u, int v);
+void draw_NPC_brown(int u, int v);
 
 /**
  * Draw the upper status bar.

@@ -115,52 +115,56 @@ int get_action(GameInputs inputs)
  * Moves the moving npc every time a player moves 2 blocks
  */
 void moveNPC() {
-    MapItem* north = get_north(MovingNPC.x, MovingNPC.y);
-    MapItem* south = get_south(MovingNPC.x, MovingNPC.y);
-    MapItem* east = get_east(MovingNPC.x, MovingNPC.y);
-    MapItem* west = get_west(MovingNPC.x, MovingNPC.y);
-    switch(MovingNPC.direction) {
-        case 0: //N
-            if (north->walkable == 0 || MovingNPC.y + 1 == 60) {
-                MovingNPC.direction = 2;
-            } else if (west->walkable != 0 && MovingNPC.x - 1 != 35) {
-                MovingNPC.direction = 3;
-                MovingNPC.x -= 1;
-            } else {
-                MovingNPC.y += 1;
-            }
-            break;
-        case 1: //S
-            if (south->walkable == 0 || MovingNPC.y - 1 == 35) {
-                MovingNPC.direction = 3;
-            } else if (east->walkable != 0 && MovingNPC.x + 1 != 60) {
-                MovingNPC.direction = 2;
-                MovingNPC.x += 1;
-            } else {
-                MovingNPC.y -= 1;
-            }
-            break;
-        case 2: //E
-            if (east->walkable == 0 || MovingNPC.x + 1 == 65) {
-                MovingNPC.direction = 1;
-            } else if (north->walkable != 0 && MovingNPC.y + 1 != 60) {
-                MovingNPC.direction = 0;
-                MovingNPC.y += 1;
-            } else {
-                MovingNPC.x += 1;
-            }
-            break;
-        case 3: //W
-            if (west->walkable == 0 || MovingNPC.x - 1 == 35) {
-                MovingNPC.direction = 0;
-            } else if (south->walkable != 0 && MovingNPC.y - 1 != 35) {
-                MovingNPC.direction = 1;
-                MovingNPC.y -= 1;
-            } else {
-                MovingNPC.x -= 1;
-            }
-            break;
-        default: break;
+    if (get_active_map_no() == 0){
+        MapItem* north = get_north(MovingNPC.x, MovingNPC.y);
+        MapItem* south = get_south(MovingNPC.x, MovingNPC.y);
+        MapItem* east = get_east(MovingNPC.x, MovingNPC.y);
+        MapItem* west = get_west(MovingNPC.x, MovingNPC.y);
+        switch(MovingNPC.direction) {
+            case 0: //N
+                if (north->walkable == 0 || MovingNPC.y + 1 == 60) {
+                    MovingNPC.direction = 2;
+                } else if (west->walkable != 0 && MovingNPC.x - 1 != 35) {
+                    MovingNPC.direction = 3;
+                    MovingNPC.x -= 1;
+                } else {
+                    MovingNPC.y += 1;
+                }
+                break;
+            case 1: //S
+                if (south->walkable == 0 || MovingNPC.y - 1 == 35) {
+                    MovingNPC.direction = 3;
+                } else if (east->walkable != 0 && MovingNPC.x + 1 != 60) {
+                    MovingNPC.direction = 2;
+                    MovingNPC.x += 1;
+                } else {
+                    MovingNPC.y -= 1;
+                }
+                break;
+            case 2: //E
+                if (east->walkable == 0 || MovingNPC.x + 1 == 65) {
+                    MovingNPC.direction = 1;
+                } else if (north->walkable != 0 && MovingNPC.y + 1 != 60) {
+                    MovingNPC.direction = 0;
+                    MovingNPC.y += 1;
+                } else {
+                    MovingNPC.x += 1;
+                }
+                break;
+            case 3: //W
+                if (west->walkable == 0 || MovingNPC.x - 1 == 35) {
+                    MovingNPC.direction = 0;
+                } else if (south->walkable != 0 && MovingNPC.y - 1 != 35) {
+                    MovingNPC.direction = 1;
+                    MovingNPC.y -= 1;
+                } else {
+                    MovingNPC.x -= 1;
+                }
+                break;
+            default: break;
+        }
+    } else {
+
     }
 }
 /**
@@ -175,7 +179,7 @@ void init_cave() {
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'F', 'W', ' ', ' '},
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'F', 'F', 'W', ' '},
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'F', 'F', 'W', ' '},
-        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'F', 'F', 'F', 'W', ' '},
+        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'F', 'G', 'F', 'W', ' '},
         {' ', ' ', ' ', ' ', 'W', 'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', 'F', 'F', 'F', 'W', ' '},
         {' ', ' ', ' ', 'W', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', 'F', 'F', 'W', ' ', ' '},
         {' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', 'W', 'W', ' ', ' ', ' '},
@@ -196,6 +200,8 @@ void init_cave() {
                 add_cave_wall(a, z);
             } else if (thisMap[z][a] == 'F') {
                 add_cave_floor(a, z);
+            } else if(thisMap[z][a] == 'G') {
+                add_unmoving_NPC(a, z, 1);
             }
         }
     }
@@ -236,7 +242,7 @@ int update_game(int action)
             break;
         case ENTER_CAVE:
             init_cave();
-            Player.x = 1;
+            Player.x = 2;
             Player.y = 17;
             draw_game(2);
             break;
@@ -274,15 +280,22 @@ int update_game(int action)
                         long_speech(lines, 13);
                         Player.quest = 1;
                         draw_game(2);
-                    } if (Player.quest && !Player.has_key) {
+                    } else if (Player.quest == 1 && !Player.has_key) {
                         const char* line1 = "Go get them!";
                         const char* line2 = "We need you to";
                         speech(line1, line2);
                         draw_game(2);
-                    } else {
-                        const char* line3 = "You did it!";
-                        const char* line4 = "K thanks";
-                        speech(line3, line4);
+                    } else if (Player.quest == 2 && !Player.has_key){
+                        const char* lines2[13] = {
+                            "You did it!", "Thank you.", "Our village has", "been restored.", "As a token of", "our gratitude", "please accept", "this key to", "the treasure at", "the center of", "our village.", "You are the", "prophesized hero"
+                        };
+                        long_speech(lines2, 13);
+                        Player.has_key = 1;
+                        draw_game(2);
+                    } else if (Player.quest == 2 && Player.has_key) {
+                        const char* line1 = "Go use that";
+                        const char* line2 = "key!";
+                        speech(line1, line2);
                         draw_game(2);
                     }
                 }
@@ -299,7 +312,7 @@ int update_game(int action)
         default:        break;
     }
     MapItem* curr_item = get_here(Player.x, Player.y);
-    if (!curr_item && get_active_map_no() == 1) {
+    if (!curr_item && get_active_map_no() == 1 && !Player.omnipotent) {
         Player.HP--;
         wait_ms(80);
         if (Player.HP == 0) {
@@ -352,7 +365,7 @@ void draw_game(int init)
                 if (init || curr_item != prev_item) // Only draw if they're different or init
                 {
                         draw = (curr_item)?curr_item->draw:draw_nothing;
-                        if (!curr_item && get_active_map_no() == 1) {
+                        if (!curr_item && get_active_map_no() == 1 && !Player.omnipotent) {
                             Player.HP--;
                             if (Player.HP == 0) {
                                 const char* line3 = "You lost!";
@@ -367,7 +380,11 @@ void draw_game(int init)
                 }
                 continue;
             } else if (x == MovingNPC.x && y == MovingNPC.y) {
-                draw = draw_NPC;
+                MapItem* curr_item = get_here(x, y);
+                draw = curr_item->draw;
+                draw(u,v);
+                draw_NPC(u, v);
+                continue;
             }
             else if (x >= 0 && y >= 0 && x < map_width() && y < map_height()) // Current (i,j) in the map
             {
@@ -461,10 +478,10 @@ void init_main_map()
         {'W',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ','W',' ',' ',' '},
         {'W',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ','W',' ',' ',' '},
         {'W',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W','W','W','W',' ',' ',' '},
-        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W','W','W','W','W','W','W'},
-        {'W',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' '},
+        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ','W','W','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ','W','T','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        {'W',' ',' ',' ','W',' ',' ',' ',' ',' ','W',' ','W',' ',' ',' ',' ',' ','W','W','W','W','W','W','W'},
+        {'W',' ',' ',' ',' ','W',' ',' ',' ',' ','W','D','W',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' '},
         {'W',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' '},
         {'W',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' '},
         {'W',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '},

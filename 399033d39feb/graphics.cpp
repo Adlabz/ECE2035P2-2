@@ -295,7 +295,7 @@ void draw_wall(int u, int v)
 #define Z 0x3a8eff
 void draw_NPC(int u, int v)
 {
-    int NPCBlock[11 * 11] =
+    /*int NPCBlock[11 * 11] =
     {
         B, B, B, B, B, B, B, B, B, B, B,
         B, Z, Z, Z, Z, Z, Z, Z, Z, Z, B,
@@ -309,7 +309,29 @@ void draw_NPC(int u, int v)
         B, Z, Z, Z, B, Z, B, Z, Z, Z, B,
         B, B, B, B, B, B, B, B, B, B, B
     };
-    uLCD.BLIT(u, v, 11, 11, NPCBlock);
+    uLCD.BLIT(u, v, 11, 11, NPCBlock);*/
+    uLCD.pixel(u + 2, v + 5, B);
+    uLCD.pixel(u + 3, v + 6, B);
+    uLCD.pixel(u + 4, v + 2, B);
+    uLCD.pixel(u + 4, v + 3, B);
+    uLCD.pixel(u + 4, v + 4, B);
+    uLCD.pixel(u + 4, v + 6, B);
+    uLCD.pixel(u + 4, v + 9, B);
+    uLCD.pixel(u + 4, v + 10, B);
+    uLCD.pixel(u + 5, v + 3, B);
+    uLCD.pixel(u + 5, v + 4, B);
+    uLCD.pixel(u + 5, v + 5, B);
+    uLCD.pixel(u + 5, v + 6, B);
+    uLCD.pixel(u + 5, v + 7, B);
+    uLCD.pixel(u + 5, v + 8, B);
+    uLCD.pixel(u + 6, v + 2, B);
+    uLCD.pixel(u + 6, v + 3, B);
+    uLCD.pixel(u + 6, v + 4, B);
+    uLCD.pixel(u + 6, v + 6, B);
+    uLCD.pixel(u + 6, v + 9, B);
+    uLCD.pixel(u + 6, v + 10, B);
+    uLCD.pixel(u + 7, v + 6, B);
+    uLCD.pixel(u + 8, v + 5, B);
 }
 void draw_plant(int u, int v)
 {
