@@ -307,15 +307,19 @@ int update_game(int action)
                 MapItem* west = get_west(Player.x, Player.y);
                 if (north && north->type > 5) {
                     n = north->type;
+                    which = 0;
                 }
                 if (south && south->type > 5) {
                     n = south->type;
+                    which = 1;
                 }
                 if (east && east->type > 5) {
                     n = east->type;
+                    which = 2;
                 }
                 if (west && west->type > 5) {
                     n = west->type;
+                    which = 3;
                 }
                 if (n) {
                     if(n == 6) { //Wizard
@@ -352,7 +356,7 @@ int update_game(int action)
                                 "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "Southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase", "your health."
                             };
                             long_speech(lines, 22);
-                            Player.HP = 99;
+                            Player.HP = 50;
                             draw_game(2);
                         }
                         if (Player.quest == 1) {
@@ -360,7 +364,7 @@ int update_game(int action)
                                 "Descend into", "the cave.", "Make sure", "your health is", "up."
                             };
                             long_speech(lines, 5);
-                            Player.HP = 99;
+                            Player.HP = 50;
                             draw_game(2);
                         }
                         if (Player.quest == 2 && !Player.has_key) {
@@ -385,6 +389,9 @@ int update_game(int action)
                             };
                             long_speech(lines, 5);
                             Player.HP += 25;
+                            if (Player.HP > 99) {
+                                Player.HP = 99;
+                            }
                             draw_game(2);
                         }
                         if (Player.has_key) {
@@ -402,6 +409,9 @@ int update_game(int action)
                             };
                             long_speech(lines, 5);
                             Player.HP += 17;
+                            if (Player.HP > 99) {
+                                Player.HP = 99;
+                            }
                             draw_game(2);
                         }
                         if (Player.has_key) {
@@ -419,6 +429,9 @@ int update_game(int action)
                             };
                             long_speech(lines, 4);
                             Player.HP += 23;
+                            if (Player.HP > 99) {
+                                Player.HP = 99;
+                            }
                             draw_game(2);
                         }
                         if (Player.has_key) {
@@ -436,6 +449,9 @@ int update_game(int action)
                             };
                             long_speech(lines, 4);
                             Player.HP += 20;
+                            if (Player.HP > 99) {
+                                Player.HP = 99;
+                            }
                             draw_game(2);
                         }
                         if (Player.has_key) {
@@ -444,6 +460,24 @@ int update_game(int action)
                             };
                             long_speech(lines, 4);
                             draw_game(2);
+                        }
+                    }
+                    if (n == 12) {
+                        if (Player.has_key) {
+                            south->draw = draw_open_treasure;
+                            draw_game(2);
+                            const char* line1 = "GAME OVER";
+                            const char* line2 = "GOOD JOB";
+                            speech(line1, line2);
+                            return GAME_OVER;
+                        }
+                    }
+                    if (n == 13) {
+                        if (Player.has_key) {
+                            south->draw = draw_opening_door;
+                            draw_game(2);
+                            south->draw = draw_opened_door;
+                            south->walkable = true;
                         }
                     }
                 }
@@ -592,6 +626,8 @@ void init_main_map()
     pc.printf("plants\r\n");
     add_cave_entry(5, 50);
     add_unmoving_NPC(7, 7, 2);
+    add_treasure(45, 44);
+    add_door(45, 46);
 
     pc.printf("Adding walls!\r\n");
     add_wall(0,              0,              HORIZONTAL, map_width());

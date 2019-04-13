@@ -51,6 +51,8 @@ typedef struct {
 #define NPC4 9
 #define NPC5 10
 #define NPC6 11
+#define TREASURE 12
+#define DOOR 13
 
 /**
  * Initializes the internal structures for all maps. This does not populate
@@ -166,5 +168,8 @@ void add_cave_wall(int x, int y);
 void add_cave_floor(int x, int y);
 //n is for which NPC draw function to use
 void add_unmoving_NPC(int x, int y, int n);
+//add door/treasure
+void add_treasure(int x, int y);
+void add_door(int x, int y);
 
 #endif //MAP_H

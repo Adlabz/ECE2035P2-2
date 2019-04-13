@@ -286,3 +286,31 @@ void add_unmoving_NPC(int x, int y, int n) {
 
     if (val) free(val); // If something is already there, free it
 }
+void add_treasure(int x, int y) {
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = TREASURE;
+
+    w1->draw = draw_treasure;
+
+    w1->walkable = false;
+
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+}
+void add_door(int x, int y) {
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = DOOR;
+
+    w1->draw = draw_door;
+
+    w1->walkable = false;
+
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+}

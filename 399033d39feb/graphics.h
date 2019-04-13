@@ -41,6 +41,11 @@ void draw_NPC_orange(int u, int v);
 void draw_NPC_yellow(int u, int v);
 void draw_NPC_white(int u, int v);
 void draw_NPC_brown(int u, int v);
+void draw_treasure(int u, int v);
+void draw_open_treasure(int u, int v);
+void draw_door(int u, int v);
+void draw_opening_door(int u, int v);
+void draw_opened_door(int u, int v);
 
 /**
  * Draw the upper status bar.
