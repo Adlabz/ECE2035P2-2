@@ -300,60 +300,62 @@ int update_game(int action)
                         draw_game(2);
                     }
                 }
-            }
-            int n;
-            MapItem* north = get_north(Player.x, Player.y);
-            MapItem* south = get_south(Player.x, Player.y);
-            MapItem* east = get_east(Player.x, Player.y);
-            MapItem* west = get_west(Player.x, Player.y);
-            if (north->type > 5) {
-                n = north->type;
-            }
-            if (south->type > 5) {
-                n = south->type;
-            }
-            if (east->type > 5) {
-                n = east->type;
-            }
-            if (west->type > 5) {
-                n = west->type;
-            }
-            pc.printf("%d", n);
-            if (n) {
-                if(n == 6) { //Wizard
-                    pc.printf("Here");
-                    if(!Player.quest) {
-                        const char* line1 = "How did you get";
-                        const char* line2 = "here?";
-                        speech(line1, line2);
-                        draw_game(2);
-                    } else if (Player.quest) {
-                        const char* lines[13] = {
-                            "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
-                        };
-                        long_speech(lines, 13);
-                        Player.quest = 2;
-                        set_active_map(0);
-                        Player.x = Player.y = 43;
-                        draw_game(2);
-                    } else if (Player.has_key) {
-                        const char* line1 = "Why did you";
-                        const char* line2 = "come back here?";
-                        speech(line1, line2);
-                        set_active_map(0);
-                        Player.x = Player.y = 43;
-                        draw_game(2);
+            } else {
+                pc.printf("in Else");
+                int n;
+                MapItem* north = get_north(Player.x, Player.y);
+                MapItem* south = get_south(Player.x, Player.y);
+                MapItem* east = get_east(Player.x, Player.y);
+                MapItem* west = get_west(Player.x, Player.y);
+                if (north->type > 5) {
+                    n = north->type;
+                }
+                if (south->type > 5) {
+                    n = south->type;
+                }
+                if (east->type > 5) {
+                    n = east->type;
+                }
+                if (west->type > 5) {
+                    n = west->type;
+                }
+                pc.printf("%d", n);
+                if (n) {
+                    if(n == 6) { //Wizard
+                        pc.printf("Here");
+                        if(!Player.quest) {
+                            const char* line1 = "How did you get";
+                            const char* line2 = "here?";
+                            speech(line1, line2);
+                            draw_game(2);
+                        } else if (Player.quest) {
+                            const char* lines[13] = {
+                                "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
+                            };
+                            long_speech(lines, 13);
+                            Player.quest = 2;
+                            set_active_map(0);
+                            Player.x = Player.y = 43;
+                            draw_game(2);
+                        } else if (Player.has_key) {
+                            const char* line1 = "Why did you";
+                            const char* line2 = "come back here?";
+                            speech(line1, line2);
+                            set_active_map(0);
+                            Player.x = Player.y = 43;
+                            draw_game(2);
+                        }
                     }
-                }
-                if(n == 7) { //Green NPC
-                }
-                if(n == 8) { //Orange NPC
-                }
-                if(n == 9) { //Yellow NPC
-                }
-                if(n == 1) {  //White NPC
-                }
-                if(n == 1) {  //Brown NPC
+                    if(n == 7) { //Green NPC
+                    }
+                    if(n == 8) { //Orange NPC
+                    }
+                    if(n == 9) { //Yellow NPC
+                    }
+                    if(n == 1) {  //White NPC
+                    }
+                    if(n == 1) {  //Brown NPC
+                    }
                 }
             }
             break;
