@@ -435,7 +435,7 @@ void draw_game(int init)
                 }
                 continue;
             } else if (x == MovingNPC.x && y == MovingNPC.y) {
-                if(Player.px != Player.x || Player.py != Player.y){
+                if(Player.px != Player.x || Player.py != Player.y || init == 2){
                     MapItem* curr_item = get_here(x, y);
                     draw = (curr_item)?curr_item->draw:draw_nothing;
                     draw(u,v);
