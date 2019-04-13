@@ -430,3 +430,23 @@ void draw_border()
     uLCD.filled_rectangle(0,   114, 127, 117, WHITE); // Bottom
     uLCD.filled_rectangle(124,  14, 127, 117, WHITE); // Right
 }
+
+
+void draw_Wizard(int u, int v){
+
+}
+void draw_NPC_green(int u, int v){
+
+}
+void draw_NPC_orange(int u, int v){
+
+}
+void draw_NPC_yellow(int u, int v){
+
+}
+void draw_NPC_white(int u, int v){
+
+}
+void draw_NPC_brown(int u, int v){
+    
+}
