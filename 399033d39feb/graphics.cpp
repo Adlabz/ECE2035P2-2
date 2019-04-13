@@ -69,6 +69,15 @@ void draw_player(int u, int v, int key)
     uLCD.pixel(u + 4, v + 10, S);
     uLCD.pixel(u + 6, v + 10, S);
     uLCD.pixel(u + 7, v + 10, RED);
+    if(key) {
+        uLCD.pixel(u + 8, v + 3 , 0xffe100);
+        uLCD.pixel(u + 9, v     , 0xffe100);
+        uLCD.pixel(u + 9, v + 1 , 0xffe100);
+        uLCD.pixel(u + 9, v + 2 , 0xe1ba24);
+        uLCD.pixel(u + 9, v + 4 , 0xe1ba24);
+        uLCD.pixel(u + 10, v + 1, 0xe1ba24);
+        uLCD.pixel(u + 10, v + 3, 0xe1ba24);
+    }
 }
 
 void draw_img(int u, int v, const char* img)
