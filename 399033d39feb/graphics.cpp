@@ -318,6 +318,7 @@ void draw_NPC(int u, int v)
     uLCD.pixel(u + 4, v + 6, B);
     uLCD.pixel(u + 4, v + 9, B);
     uLCD.pixel(u + 4, v + 10, B);
+    uLCD.pixel(u + 5, v + 2, B);
     uLCD.pixel(u + 5, v + 3, B);
     uLCD.pixel(u + 5, v + 4, B);
     uLCD.pixel(u + 5, v + 5, B);
@@ -448,5 +449,5 @@ void draw_NPC_white(int u, int v){
 
 }
 void draw_NPC_brown(int u, int v){
-    
+
 }
