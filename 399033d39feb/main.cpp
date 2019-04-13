@@ -272,33 +272,32 @@ int update_game(int action)
             return FULL_DRAW;
         case ACTION_BUTTON:
             printf("here");
-            if (Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x) {
-                if (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y) {
-                    if (!Player.quest) {
-                        const char* lines[13] = {
-                            "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here."
-                        };
-                        long_speech(lines, 13);
-                        Player.quest = 1;
-                        draw_game(2);
-                    } else if (Player.quest == 1 && !Player.has_key) {
-                        const char* line1 = "Go get them!";
-                        const char* line2 = "We need you to";
-                        speech(line1, line2);
-                        draw_game(2);
-                    } else if (Player.quest == 2 && !Player.has_key){
-                        const char* lines2[13] = {
-                            "You did it!", "Thank you.", "Our village has", "been restored.", "As a token of", "our gratitude", "please accept", "this key to", "the treasure at", "the center of", "our village.", "You are the", "prophesized hero"
-                        };
-                        long_speech(lines2, 13);
-                        Player.has_key = 1;
-                        draw_game(2);
-                    } else if (Player.quest == 2 && Player.has_key) {
-                        const char* line1 = "Go use that";
-                        const char* line2 = "key!";
-                        speech(line1, line2);
-                        draw_game(2);
-                    }
+            if ((Player.x == MovingNPC.x || Player.x - 1 == MovingNPC.x || Player.x + 1 == MovingNPC.x)
+                    && (Player.y == MovingNPC.y || Player.y - 1 == MovingNPC.y || Player.y + 1 == MovingNPC.y)) {
+                if (!Player.quest) {
+                    const char* lines[13] = {
+                        "Help us!", "Our people are", "stuck in a", "cave. The", "journey is too", "treacherous for", "mere mortals.", "Only you can", "save them!", "You must", "descend into", "the cave west", "of here."
+                    };
+                    long_speech(lines, 13);
+                    Player.quest = 1;
+                    draw_game(2);
+                } else if (Player.quest == 1 && !Player.has_key) {
+                    const char* line1 = "Go get them!";
+                    const char* line2 = "We need you to";
+                    speech(line1, line2);
+                    draw_game(2);
+                } else if (Player.quest == 2 && !Player.has_key){
+                    const char* lines2[13] = {
+                        "You did it!", "Thank you.", "Our village has", "been restored.", "As a token of", "our gratitude", "please accept", "this key to", "the treasure at", "the center of", "our village.", "You are the", "prophesized hero"
+                    };
+                    long_speech(lines2, 13);
+                    Player.has_key = 1;
+                    draw_game(2);
+                } else if (Player.quest == 2 && Player.has_key) {
+                    const char* line1 = "Go use that";
+                    const char* line2 = "key!";
+                    speech(line1, line2);
+                    draw_game(2);
                 }
             } else {
                 pc.printf("in Else");
