@@ -206,29 +206,6 @@ void init_cave() {
         }
     }
 }
-/**
- * See if the player has element of type n adjacent. return n (i.e. NPC, etc.). N>5 (stuff I want to interact with)
- * @return   n
- */
-int get_adjacent() {
-    MapItem* north = get_north(Player.x, Player.y);
-    MapItem* south = get_south(Player.x, Player.y);
-    MapItem* east = get_east(Player.x, Player.y);
-    MapItem* west = get_west(Player.x, Player.y);
-    if (north->type > 5) {
-        return north->type;
-    }
-    if (south->type > 5) {
-        return south->type;
-    }
-    if (east->type > 5) {
-        return east->type;
-    }
-    if (west->type > 5) {
-        return west->type;
-    }
-    return 0;
-}
 
 /**
  * Update the game state based on the user action. For example, if the user
@@ -324,7 +301,23 @@ int update_game(int action)
                 }
             }
             int n;
-            if (n = get_adjacent()) {
+            MapItem* north = get_north(Player.x, Player.y);
+            MapItem* south = get_south(Player.x, Player.y);
+            MapItem* east = get_east(Player.x, Player.y);
+            MapItem* west = get_west(Player.x, Player.y);
+            if (north->type > 5) {
+                n = north->type;
+            }
+            if (south->type > 5) {
+                n = south->type;
+            }
+            if (east->type > 5) {
+                n = east->type;
+            }
+            if (west->type > 5) {
+                n = west->type;
+            }
+            if (n) {
                 switch(n){
                     case 6: //Wizard
                         if(!Player.quest) {
