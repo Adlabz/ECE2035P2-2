@@ -206,6 +206,29 @@ void init_cave() {
         }
     }
 }
+/**
+ * See if the player has element of type n adjacent. return n (i.e. NPC, etc.). N>5 (stuff I want to interact with)
+ * @return   n
+ */
+int get_adjacent() {
+    MapItem* north = get_north(Player.x, Player.y);
+    MapItem* south = get_south(Player.x, Player.y);
+    MapItem* east = get_east(Player.x, Player.y);
+    MapItem* west = get_west(Player.x, Player.y);
+    if (north->type > 5) {
+        return north->type;
+    }
+    if (south->type > 5) {
+        return south->type;
+    }
+    if (east->type > 5) {
+        return east->type;
+    }
+    if (west->type > 5) {
+        return west->type;
+    }
+    return 0;
+}
 
 /**
  * Update the game state based on the user action. For example, if the user
@@ -300,6 +323,47 @@ int update_game(int action)
                     }
                 }
             }
+            int n;
+            if (n = get_adjacent()) {
+                switch(n){
+                    case 6: //Wizard
+                        if(!Player.quest) {
+                            const char* line1 = "How did you get";
+                            const char* line2 = "here?";
+                            speech(line1, line2);
+                            draw_game(2);
+                        } else if (Player.quest == 1) {
+                            const char* lines[13] = {
+                                "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
+                            };
+                            long_speech(lines, 13);
+                            Player.quest = 2;
+                            set_active_map(0);
+                            Player.x = Player.y = 43;
+                            draw_game(2);
+                        } else if (Player.quest == 2) {
+                            const char* line1 = "Why did you";
+                            const char* line2 = "come back here?";
+                            speech(line1, line2);
+                            set_active_map(0);
+                            Player.x = Player.y = 43;
+                            draw_game(2);
+                        }
+                        break;
+                    case 7: //Green NPC
+                        break;
+                    case 8: //Orange NPC
+                        break;
+                    case 9: //Yellow NPC
+                        break;
+                    case 10: //White NPC
+                        break;
+                    case 11: //Brown NPC
+                        break;
+                    default:
+                        break;
+                }
+            }
             break;
         case MENU_BUTTON: break;
         case OMNI:
@@ -366,7 +430,7 @@ void draw_game(int init)
                 {
                         draw = (curr_item)?curr_item->draw:draw_nothing;
                         if (!curr_item && get_active_map_no() == 1 && !Player.omnipotent) {
-                            Player.HP--;
+                            Player.HP-=2;
                             if (Player.HP == 0) {
                                 const char* line3 = "You lost!";
                                 const char* line4 = "Try again...";
