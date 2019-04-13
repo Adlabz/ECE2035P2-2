@@ -36,10 +36,6 @@ typedef struct {
     int walkable;
 } MapItem;
 
-typedef struct {
-    int tm;
-    int tx, ty;
-} StairsData;
 
 // MapItem types
 // Define more of these!

@@ -256,7 +256,8 @@ void add_cave_floor(int x, int y)
 }
 void add_unmoving_NPC(int x, int y, int n) {
     MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
-    w1->type = 5 + n;
+    int z = n + 5;
+    w1->type = z;
     switch(n) {
         case 1:
             w1->draw = draw_Wizard;

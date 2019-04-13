@@ -317,14 +317,16 @@ int update_game(int action)
             if (west->type > 5) {
                 n = west->type;
             }
+            pc.printf("%d", n);
             if (n) {
                 if(n == 6) { //Wizard
+                    pc.printf("here");
                     if(!Player.quest) {
                         const char* line1 = "How did you get";
                         const char* line2 = "here?";
                         speech(line1, line2);
                         draw_game(2);
-                    } else if (Player.quest == 1) {
+                    } else if (Player.quest) {
                         const char* lines[13] = {
                             "You are", "the first to", "get to the end", "of this cave.", "As a reward,", "the people", "of the village", "have been freed.", "You will find", "them back home,", "and I am", "teleporting you", "out of here now."
                         };
@@ -333,7 +335,7 @@ int update_game(int action)
                         set_active_map(0);
                         Player.x = Player.y = 43;
                         draw_game(2);
-                    } else if (Player.quest == 2) {
+                    } else if (Player.has_key) {
                         const char* line1 = "Why did you";
                         const char* line2 = "come back here?";
                         speech(line1, line2);
