@@ -302,21 +302,21 @@ int update_game(int action)
                 }
             } else {
                 pc.printf("in Else");
-                int n;
+                int n = 0;
                 MapItem* north = get_north(Player.x, Player.y);
                 MapItem* south = get_south(Player.x, Player.y);
                 MapItem* east = get_east(Player.x, Player.y);
                 MapItem* west = get_west(Player.x, Player.y);
-                if (north->type > 5) {
+                if (north && north->type > 5) {
                     n = north->type;
                 }
-                if (south->type > 5) {
+                if (south && south->type > 5) {
                     n = south->type;
                 }
-                if (east->type > 5) {
+                if (east && east->type > 5) {
                     n = east->type;
                 }
-                if (west->type > 5) {
+                if (west && west->type > 5) {
                     n = west->type;
                 }
                 pc.printf("%d", n);
