@@ -54,10 +54,12 @@ int get_action(GameInputs inputs)
     if (inputs.b1 == 0) {
         pc.printf("b1 != 0\n");
         if ((north && north->type == CAVE_ENTRY) || (south && south->type == CAVE_ENTRY) || (east && east->type == CAVE_ENTRY) || (west && west->type == CAVE_ENTRY)) {
+            pc.printf("OPEN_CAVE\n");
             return OPEN_CAVE;
         }
         pc.printf("first if\n");
         if ((north && north->type == CAVE_ENTRY_OPENING) || (south && south->type == CAVE_ENTRY_OPENING) || (east && east->type == CAVE_ENTRY_OPENING) || (west && west->type == CAVE_ENTRY_OPENING)) {
+            pc.printf("ENTER_CAVE\n");
             return ENTER_CAVE;
         }
         pc.printf("second if\n");
