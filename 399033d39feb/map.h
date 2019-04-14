@@ -53,6 +53,8 @@ typedef struct {
 #define NPC6 11
 #define TREASURE 12
 #define DOOR 13
+#define BRIDGE 14
+#define EDGE 15
 
 /**
  * Initializes the internal structures for all maps. This does not populate
@@ -171,5 +173,8 @@ void add_unmoving_NPC(int x, int y, int n);
 //add door/treasure
 void add_treasure(int x, int y);
 void add_door(int x, int y);
+//bridge elements
+void add_bridge_path(int x, int y);
+void add_bridge_edge(int x, int y);
 
 #endif //MAP_H

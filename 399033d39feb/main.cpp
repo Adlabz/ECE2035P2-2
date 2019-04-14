@@ -133,7 +133,7 @@ void moveNPC() {
                 }
                 break;
             case 1: //S
-                if (south->walkable == 0 || MovingNPC.y - 1 == 35) {
+                if (south->walkable == 0 || MovingNPC.y - 1 == 37) {
                     MovingNPC.direction = 3;
                 } else if (east->walkable != 0 && MovingNPC.x + 1 != 60) {
                     MovingNPC.direction = 2;
@@ -553,8 +553,15 @@ void draw_game(int init)
                                 exit(1);
                             }
                         }
+                        if (curr_item && curr_item->type == EDGE) {
+                            draw = draw_edge_player;
+                        }
                         draw(u, v);
-                        draw_player(u, v, Player.has_key);
+                        if (curr_item && (curr_item->type == BRIDGE || curr_item->type == EDGE)){
+                            //don't draw player
+                        } else {
+                            draw_player(u, v, Player.has_key);
+                        }
                 }
                 continue;
             } else if (x == MovingNPC.x && y == MovingNPC.y) {
@@ -652,9 +659,9 @@ void init_main_map()
 
     char wallxy[25][25] =
     {
-        {'W','W','W','W','W','W','W','W','W',' ',' ',' ',' ',' ','W','W','W','W','W','W','W','W',' ',' ',' '},
-        {'W',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ','W',' ',' ',' '},
-        {'W',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ','W',' ',' ',' '},
+        {'W','W','W','W','W','W','W','W','W','B','B','B','B','B','W','W','W','W','W','W','W','W',' ',' ',' '},
+        {'W',' ',' ',' ',' ',' ',' ',' ','W','B','B','B','B','B','W',' ',' ',' ',' ',' ',' ','W',' ',' ',' '},
+        {'W',' ',' ',' ',' ',' ',' ',' ','W','E','E','E','E','E','W',' ',' ',' ',' ',' ',' ','W',' ',' ',' '},
         {'W',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ','W',' ',' ',' '},
         {'W',' ',' ',' ',' ',' ',' ','W','W',' ',' ',' ',' ',' ','W','W',' ',' ',' ',' ',' ','W',' ',' ',' '},
         {'W',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ','W',' ',' ',' '},
@@ -682,6 +689,12 @@ void init_main_map()
         for (int a = 0; a < 25; a++) {
             if (wallxy[z][a] == 'W') {
                 add_wall(34 + a, 34 + z, VERTICAL, 1);
+            }
+            else if (wallxy[z][a] == 'B') {
+                add_bridge_path(34 + a, 34 + z);
+            }
+            else if (wallxy[z][a] == 'E') {
+                add_bridge_edge(34 + a, 34 + z);
             }
         }
     }

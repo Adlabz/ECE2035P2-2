@@ -742,3 +742,37 @@ void draw_opened_door(int u, int v) {
     };
     uLCD.BLIT(u, v, 11, 11, f5);
 }
+void draw_edge_bridge(int u, int v) {
+    int b[11*11] =
+    {
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, S, M, C, C, C, C, C, C, C,
+        C, C, S, M, C, C, C, C, C, C, C,
+        S, S, S, M, S, S, S, S, S, S, S,
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, C, C, C, C, C, C, S, M, C,
+        C, C, C, C, C, C, C, C, S, M, C,
+        S, S, S, S, S, S, S, S, S, M, S,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x5c6701, 0x5c6701, 0x1e4900,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900
+    }
+    uLCD.BLIT(u, v, 11, b);
+}
+void draw_edge_player(int u, int v) {
+    int b[11*11] =
+    {
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, S, M, C, C, C, C, C, C, C,
+        C, C, S, M, C, C, C, C, C, C, C,
+        S, S, S, M, S, S, S, S, S, S, S,
+        M, M, M, M, M, M, M, M, M, M, M,
+        C, C, C, C, C, C, C, C, S, M, C,
+        C, C, C, C, C, C, C, C, S, M, C,
+        S, S, S, S, S, S, S, S, S, M, S,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x850303, 0x1e4900, 0x850303, 0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x1e4900, 0x850303, 0x1e4900, 0x850303, 0x1e4900, 0x5c6701, 0x5c6701, 0x1e4900,
+        0x1e4900, 0x1e4900, 0x1e4900, 0x850303, 0x923a00, 0x1e4900, 0x923a00, 0x850303, 0x1e4900, 0x1e4900, 0x1e4900
+    }
+    uLCD.BLIT(u, v, 11, b);
+}

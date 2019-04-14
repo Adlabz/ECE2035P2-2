@@ -314,3 +314,31 @@ void add_door(int x, int y) {
 
     if (val) free(val); // If something is already there, free it
 }
+void add_bridge_path(int x, int y) {
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = BRIDGE;
+
+    w1->draw = draw_wall;
+
+    w1->walkable = true;
+
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+}
+void add_bridge_edge(int x, int y) {
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+
+    w1->type = EDGE;
+
+    w1->draw = draw_edge_bridge;
+
+    w1->walkable = true;
+
+
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+
+    if (val) free(val); // If something is already there, free it
+}
