@@ -155,7 +155,7 @@ void moveNPC() {
             case 3: //W
                 if (west->walkable == 0 || MovingNPC.x - 1 == 35) {
                     MovingNPC.direction = 0;
-                } else if (south->walkable != 0 && MovingNPC.y - 1 != 35) {
+                } else if (south->walkable != 0 && MovingNPC.y - 1 != 37) {
                     MovingNPC.direction = 1;
                     MovingNPC.y -= 1;
                 } else {
