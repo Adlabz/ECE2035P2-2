@@ -349,7 +349,7 @@ int update_game(int action)
                     if(n == 7) { //Green NPC
                         if(!Player.quest) {
                             const char* lines[22] = {
-                                "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "Southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase", "your health."
+                                "Welcome. You", "stand in what", "is left of", "my village.", "All of us", "but I", "dissappeared one", "day. Travel", "southeast of", "here and save", "that village", "from the same", "fate. There", "is still time", "to save them.", "Talk to the", "blue patrolman.", "The mission", "will be tough.", "Drink this", "to increase", "your health."
                             };
                             long_speech(lines, 22);
                             Player.HP = 50;
