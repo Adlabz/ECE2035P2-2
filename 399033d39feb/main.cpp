@@ -493,7 +493,7 @@ int update_game(int action)
     if (!curr_item && get_active_map_no() == 1 && !Player.omnipotent) {
         Player.HP--;
         wait_ms(80);
-        if (Player.HP == 0) {
+        if (Player.HP <= 0) {
             const char* line3 = "You lost!";
             const char* line4 = "Try again...";
             speech(line3, line4);
@@ -545,7 +545,7 @@ void draw_game(int init)
                         draw = (curr_item)?curr_item->draw:draw_nothing;
                         if (!curr_item && get_active_map_no() == 1 && !Player.omnipotent) {
                             Player.HP-=2;
-                            if (Player.HP == 0) {
+                            if (Player.HP <= 0) {
                                 const char* line3 = "You lost!";
                                 const char* line4 = "Try again...";
                                 speech(line3, line4);
