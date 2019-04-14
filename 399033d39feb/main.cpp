@@ -749,7 +749,7 @@ int main()
     //Player.x = Player.y = 43;
     Player.HP = 1;
     MovingNPC.x = 43;
-    MovingNPC.y = 38;
+    MovingNPC.y = 39;
 
 
     // Initial drawing
